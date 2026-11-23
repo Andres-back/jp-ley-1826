@@ -210,7 +210,7 @@
   /* Cuatro o más viñetas breves seguidas (los porcentajes del artículo 91 en Bienes) van en dos columnas: una por renglón
      dejaba vacía la mitad derecha de la lectura (QA del pulido, 29/10/2026). El texto no cambia. */
   function rico(s) {
-    var lineas = String(s).split('\n'), out = [], k = 0;
+    var lineas = String(s).split('\n').reduce(function (a, l) { if (!/[┌┐└┘├┤┬┴┼─│►]/.test(l)) return a.concat([l]); var x = l.replace(/[┌┐└┘├┤┬┴┼─│►]+/g, ' ').replace(/\s{2,}/g, ' ').trim(); return x ? a.concat([x]) : a; }, []), out = [], k = 0;   // Ley 1826: sin dibujo de caja
     while (k < lineas.length) {
       var j = k;
       // Una palabra de 20 caracteres o más («indagación/investigación.») no cabe en media columna y se montaba sobre la
@@ -259,11 +259,11 @@
      el curso que lo pone en sus datos (Terminaciones). */
   function marcarAlertas(b, el) {
     (b.items || []).forEach(function (it, i) {
-      if (!it.alerta) return;
+      if (!it.alerta && !it.especial) return;   // Ley 1826: también los elementos de diseño especial
       el.querySelectorAll('[data-i="' + i + '"],[data-n="' + i + '"]').forEach(function (x) {
         if (x.classList.contains('es-alerta')) return;
         x.classList.add('es-alerta');
-        (x.querySelector('.esq-tarjeta') || x).insertAdjacentHTML('afterbegin', '<span class="alerta-sello"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Alerta</span>');
+        (x.querySelector('.esq-tarjeta') || x).insertAdjacentHTML('afterbegin', '<span class="alerta-sello">' + (it.especial ? '<i class="fas fa-star" aria-hidden="true"></i> ' + esc(it.especial) : '<i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Alerta') + '</span>');
       });
     });
   }
@@ -753,7 +753,7 @@
     l.classList.toggle('en-hoja', !!hoja);
     /* «ventanaAmplia» (Terminaciones, doctora Clara, 18/11/2026: «ventanas más amplias, más texto y menos clics»): la ventana es
        grande, trae el texto completo de la idea y se desplaza si es largo, sin partes ni «Seguir leyendo»; queda leída al final. */
-    var amplia = !hoja && !!datos.ventanaAmplia;
+    var amplia = !hoja && (!!datos.ventanaAmplia || !!(datos.tablaVentana && html));   // Ley 1826: la tabla, como tabla
     l.classList.toggle('amplia', amplia);
     /* «html»: la ventana trae una tabla completa ya pintada (malla de la página compacta); solo con ventana amplia. */
     if (!amplia) html = null;
@@ -1883,14 +1883,14 @@
     l.innerHTML = '<div class="lector-caja lector-eje" role="dialog" aria-modal="true" aria-label="' + esc(may(titulo)) + '" tabindex="-1">' +
       '<button type="button" class="cerrar" aria-label="Cerrar comparación">Cerrar ×</button><p class="lectura-eyebrow">' + esc(may(titulo)) + '</p>' +
       '<div class="eje-comparado">' + columnas.map(function (c, j) {
-        return '<div class="eje-col d' + (j + 1) + '">' + (c[0] ? '<p class="eje-col-cab">' + esc(may(c[0])) + '</p>' : '') + '<p class="lectura-texto">' + rico(c[1] || '–') + '</p></div>';
+        return '<div class="eje-col d' + (j + 1) + '">' + (c[0] ? '<p class="eje-col-cab">' + esc(may(c[0])) + '</p>' : '') + '<p class="lectura-texto">' + rico(c[1] || '–').replace(/\s+•\s+/g, '<br>• ') + '</p></div>';
       }).join('') + '</div></div>';
     l.hidden = false;
     var caja = l.firstChild, textos = caja.querySelectorAll('.lectura-texto');
     /* La letra crece hasta 22 px si el texto es breve y baja de a medio punto (hasta 12 px) hasta caber: nunca desplazamiento. */
-    for (var fs = topeLetra(22); fs >= 12; fs -= 0.5) {
+    for (var fs = topeLetra(18); fs >= 12; fs -= 0.5) {
       textos.forEach(function (t) { t.style.fontSize = fs + 'px'; });
-      if (caja.scrollHeight <= caja.clientHeight + 1) break;
+      if (caja.scrollHeight <= caja.clientHeight + 1 && [].every.call(caja.querySelectorAll('.eje-col'), function (c) { return c.scrollHeight <= c.clientHeight + 1; })) break;   // Ley 1826: también cada columna
     }
     reanimar(caja);
     if (desde && desde.classList) desde.classList.add('abierta');
@@ -2117,7 +2117,7 @@
             var cadena = !ramas && /─+►/.test(crudo) ? crudo.split(/\s*─+►\s*/).filter(function (x) { return x.trim(); }) : null;
             var t = ramas ? '<ul class="cmp-arbol">' + ramas.map(function (x) { return '<li><span class="lectura-texto">' + rico(x) + '</span></li>'; }).join('') + '</ul>' :
               cadena ? '<span class="cmp-cadena">' + cadena.map(function (x) { return '<span class="cmp-eslabon lectura-texto">' + rico(x) + '</span>'; }).join('<i class="fas fa-arrow-right" aria-hidden="true"></i>') + '</span>' :
-              '<span class="lectura-texto">' + (/^[a-zñ]\)$/.test(crudo.trim()) ? '<span class="parr">' + esc(crudo.trim()) + '</span>' : (crudo || !vacia ? rico(crudo || '–') : '')) + '</span>';
+              '<span class="lectura-texto">' + (/^[a-zñ]\)$/.test(crudo.trim()) ? '<span class="parr">' + esc(crudo.trim()) + '</span>' : (crudo || !vacia ? rico(crudo || '–').replace(/\s+•\s+/g, '<br>• ') : '')) + '</span>';
             var r = ' data-rot="' + esc(may(celda(z.cols[j]))) + '"';
             /* En una tabla de una sola fila la primera celda no es el rótulo de la fila: todas van igual (Juan, 20/11/2026:
                «una columna en negrilla y la otra no»). */
@@ -2126,7 +2126,7 @@
         }).join('') + '</tbody></table></div>';
   }
   function cmpVentanaTabla(it) {
-    return (it.tabla.antes || []).map(function (i) { return '<div class="cmp-p"><p class="lectura-texto">' + rico(seg(i)) + '</p></div>'; }).join('') + cmpTabla(it.tabla);
+    return (it.tabla.antes || []).map(function (i) { return '<div class="cmp-p"><p class="lectura-texto">' + rico(seg(i)) + '</p></div>'; }).join('') + cmpTabla(it.tabla) + (it.tabla.despues || []).map(function (i) { return '<p class="escena-pie tabla-nota">' + esc(may(seg(i))) + '</p>'; }).join('');
   }
   B.compacta = function (b, k) {
     var hayFlujo = !!(b.items.length && b.items[0].clase === 'flujo');
@@ -2376,14 +2376,14 @@
   B.puntos = function (b, k) {
     var img = escena.ilustracion, a = (datos.anclas && datos.anclas[img]) || { r: 1.5, p: [] }, n = b.items.length, circulos = '', leyenda = '';
     b.items.forEach(function (it, i) {
-      var p = a.p[i] || [12 + 76 * i / Math.max(1, n - 1), 90], id = k + '-' + i;
+      var p = it.pos || a.p[i] || [12 + 76 * i / Math.max(1, n - 1), 90], id = k + '-' + i;
       /* datos.puntosSoloLeyenda (SRPA, observación de la Fiscalía del 18/11/2026: el número sobre la ilustración y el cajón de la
          derecha abrían lo mismo): el número solo señala el objeto (no abre nada; se pone en verde cuando su cajón ya se leyó) y
          el texto se abre únicamente desde la leyenda. Sin la opción, como siempre: círculo y rótulo abren el mismo texto. */
       circulos += datos.puntosSoloLeyenda
         ? '<span class="hotspot hotspot-marca" data-id="' + id + '" aria-hidden="true" style="left:' + p[0] + '%;top:' + p[1] + '%;--d:' + (0.25 + i * 0.12) + 's">' +
           '<span class="hotspot-n">' + (i + 1) + '</span></span>'
-        : '<button type="button" class="hotspot" data-id="' + id + '" data-i="' + i + '" tabindex="-1" aria-hidden="true" style="left:' + p[0] + '%;top:' + p[1] + '%;--d:' + (0.25 + i * 0.12) + 's">' +
+        : '<button type="button" class="hotspot' + (escena.globos ? ' globo' : '') + '" data-id="' + id + '" data-i="' + i + '" tabindex="-1" aria-hidden="true" style="left:' + p[0] + '%;top:' + p[1] + '%;--d:' + (0.25 + i * 0.12) + 's">' +
           '<span class="hotspot-n">' + (i + 1) + '</span></button>';
       leyenda += '<li><button type="button" class="punto-leyenda' + refc(it.label) + '" data-id="' + id + '" data-i="' + i + '" style="--d:' + (0.2 + i * 0.08) + 's">' +
         '<span class="hotspot-n">' + (i + 1) + '</span><span class="leyenda-rotulo">' + rot(it.label) + '</span><span class="hotspot-visto">' + visto + '</span>' + estado + '</button></li>';
@@ -2706,15 +2706,15 @@
   function esquemaEscenario(b, k) {
     var n = b.items.length, m = n <= 2 ? 21 : n === 3 ? 16 : 11.5, forma = escena.escenario.camino;
     var lamina = n === 2 && datos.ilustraciones && escena.ilustracion ? '<span class="esq-lamina" aria-hidden="true"><img src="' + srcImagen(escena.ilustracion) + '" alt=""></span>' : '';
-    return '<div class="esquema esq-esc n' + n + '">' + paisajeEscena(escena.escenario) + lamina + '<div class="esquema-hijos">' + b.items.map(function (it, i) {
+    return '<div class="esquema esq-esc n' + n + (escena.cielo ? ' paradas-cielo' : '') + (escena.tramos && escena.tramos.length ? ' con-tramos' : '') + '">' + paisajeEscena(escena.escenario) + lamina + '<div class="esquema-hijos">' + b.items.map(function (it, i) {
       var x = n === 1 ? 50 : m + i * (100 - 2 * m) / (n - 1);
-      return '<button type="button" class="nodo-esquema esq-parada' + refc(it.label) + '" data-id="' + k + '-' + i + '" data-i="' + i + '" style="--d:' + (0.25 + i * 0.12) + 's;--x:' + x.toFixed(2) + '%;--y:' + caminoY(forma, x).toFixed(2) + '%">' +
-        '<span class="esq-tarjeta"><span class="esquema-arte">' + svgObjeto(it.obj, 46) + '</span><span class="esquema-rotulo">' + rot(it.label) + '</span>' +
+      return '<button type="button" class="nodo-esquema esq-parada' + refc(it.label) + '" data-id="' + k + '-' + i + '" data-i="' + i + '" style="order:' + (2 * i + 1) + ';--d:' + (0.25 + i * 0.12) + 's;--x:' + x.toFixed(2) + '%;--y:' + caminoY(forma, x).toFixed(2) + '%">' +
+        '<span class="esq-tarjeta"><span class="esquema-arte">' + svgObjeto(it.obj, 46) + '</span><span class="esquema-rotulo">' + rot(it.label) + '</span>' + (it.beneficio ? '<span class="esq-beneficio">' + esc(it.beneficio) + '</span>' : '') +
         '<span class="esquema-extracto">' + esc(may(extracto(segs(it.segs), 60))) + '</span>' +
         '<span class="esquema-marca"><span class="marca-ver">' + mano + ' Explorar</span><span class="marca-falta"><i class="fas fa-book-open" aria-hidden="true"></i> Falta leer</span>' +
         '<span class="marca-leida">' + visto + ' +10</span></span></span><span class="esq-pin" aria-hidden="true"><b>' + (i + 1) + '</b></span>' +
         '<span class="esq-clic" aria-hidden="true"><i class="fas fa-hand-pointer"></i> Clic aquí</span></button>';
-    }).join('') + '<span class="esq-yo" aria-hidden="true"><svg viewBox="0 0 30 44"><circle cx="15" cy="9" r="7"/><path d="M6 22 Q15 13 24 22 L22 34 H8 Z"/><path class="pierna" d="M11 34 V43 M19 34 V43"/></svg></span></div></div>';
+    }).join('') + (escena.tramos || []).map(function (t, j) { var xa = n === 1 ? 50 : m + t.de * (100 - 2 * m) / (n - 1), xb = n === 1 ? 50 : m + t.a * (100 - 2 * m) / (n - 1); return '<span class="esq-tramo esq-tramo-' + (j + 1) + '" style="order:' + (2 * t.de) + ';--xa:' + xa.toFixed(2) + '%;--xb:' + xb.toFixed(2) + '%">' + esc(may(t.rotulo)) + '</span>'; }).join('') + '<span class="esq-yo" aria-hidden="true"><svg viewBox="0 0 30 44"><circle cx="15" cy="9" r="7"/><path d="M6 22 Q15 13 24 22 L22 34 H8 Z"/><path class="pierna" d="M11 34 V43 M19 34 V43"/></svg></span></div></div>';
   }
   /* El caminante está en la siguiente parada por leer; al leerla avanza a la otra. Esa parada lleva además «Clic aquí»
      (revisión de la Fiscalía, 13/11/2026; Jennifer: «una señalización pequeñita de dónde debe hacer el clic para que no entienda
@@ -2750,7 +2750,25 @@
           '<span class="marca-leida">' + visto + ' Leída</span></span></button>';
       }).join('') + '</div></div>';
   };
-  B.esquema.activar = function (b, k, el) { abreLector(el, b); if (escena.escenario) { moverCaminante(el); el.addEventListener('ova-visto', function () { moverCaminante(el); }); } };
+  B.esquema.activar = function (b, k, el) { abreLector(el, b); if (escena.escenario) { moverCaminante(el); el.addEventListener('ova-visto', function () { moverCaminante(el); }); encajarParadas(el); } };
+  /* Ley 1826: ninguna parada del camino se corta por arriba (Samir, 23/11/2026, U4 L1). */
+  function encajarParadas(el) {
+    function una() {
+      var esc0 = el.querySelector('.esq-esc'); if (!esc0) return;
+      var r0 = esc0.getBoundingClientRect(); if (!r0.height) return;
+      el.querySelectorAll('.esq-parada').forEach(function (p) {
+        p.classList.remove('esq-compacta'); p.style.marginTop = '';
+        if (getComputedStyle(p).position !== 'absolute') return;
+        var cabe = function () { var c = p.querySelector('.esq-clic'), y = p.getBoundingClientRect().top; if (c && c.offsetParent) y = Math.min(y, c.getBoundingClientRect().top); return y >= r0.top + 4; };
+        if (cabe()) return;
+        p.classList.add('esq-compacta');
+        if (!cabe()) { var c = p.querySelector('.esq-clic'), y = p.getBoundingClientRect().top; if (c && c.offsetParent) y = Math.min(y, c.getBoundingClientRect().top); p.style.marginTop = Math.ceil(r0.top + 4 - y) + 'px'; }
+      });
+    }
+    requestAnimationFrame(una); setTimeout(una, 700);
+    if (document.fonts) document.fonts.ready.then(una);
+    window.addEventListener('resize', una); el.addEventListener('ova-visto', function () { setTimeout(una, 60); });
+  }
 
   /* ---------- Familias de la segunda pasada (SRPA, 30/10/2026) ----------
      Conservan el recorrido de Juan (entrada breve, exploración, texto íntegro en la ventana, visto y avance) y cambian la acción
@@ -3524,7 +3542,7 @@
     var orden = b.tipo === 'mapa' ? b.items.filter(function (x) { return x.centro; }).concat(b.items.filter(function (x) { return !x.centro; })) : b.items;
     orden.forEach(function (it, i) { lista.push({ id: k + '-' + i, label: it.label, texto: segs(it.segs), obj: it.obj, acomp: it.acomp }); });
     var n = lista.length;
-    var html = '<div class="contexto n' + n + '">' + (cabeza ? '<p class="bloque-titulo">' + esc(may(cabeza)) + '</p>' : '') +
+    var html = '<div class="contexto n' + n + (n === 1 && b.items.length === 1 && b.items[0].alerta ? ' ctx-alerta' : '') + '">' + (cabeza ? '<p class="bloque-titulo">' + esc(may(cabeza)) + '</p>' : '') +
       (n > 1 ? '<div class="ctx-puntos" role="tablist">' + lista.map(function (it, i) {
         return '<button type="button" role="tab" class="ctx-punto' + refc(it.label) + '" data-id="' + it.id + '" data-i="' + i + '" aria-selected="false" style="--d:' + (i * 0.07) + 's">' +
           '<span class="ctx-n">' + (i + 1) + '</span><span class="ctx-ico">' + svgObjeto(it.obj, 28) + '</span><span class="ctx-rotulo">' + rot(it.label) + '</span><span class="ctx-visto">' + visto + '</span>' + estado + '</button>';
@@ -3542,7 +3560,7 @@
       /* El texto se escribe letra por letra, como en las fichas (Esteban, 31/10/2026: detalles en las 5 unidades). */
       var lt = caja.querySelector('.lectura-texto'), letras = quieto || !lt ? null : envolverLetras(lt);
       marcar(it.id); /* marcar primero: «Exploración completa» cambia la altura */
-      if (!dosificar(caja, function () { encajarTexto(cont, caja); })) encajarTexto(cont, caja);
+      if (!dosificar(caja, function () { encajarTexto(cont, caja); }, datos.paginaLamina && anchoReal() ? datos.paginaLamina : null)) encajarTexto(cont, caja);
       reanimar(caja);
       if (letras) escribirLetras(lt, letras, function () {});
     }
@@ -3595,14 +3613,22 @@
       return '<li style="--d:' + (0.4 + i * 0.1) + 's"><i class="fas fa-circle-check" aria-hidden="true"></i>' + esc(may(c)) + '</li>';
     }).join('') + '</ul>';
     /* Pie de una tabla de la ficha («Fuente. Elaboración propia», Derechos humanos, 31/10/2026): en la franja de abajo. */
-    if (escena.pie && escena.pie.length) cuerpo += '<p class="escena-pie">' + esc(may(segs(escena.pie))) + '</p>';
+    if (escena.pie && escena.pie.length) cuerpo += '<p class="escena-pie">' + (/\[\^\d+\]/.test(segs(escena.pie)) ? rico(segs(escena.pie)) : esc(may(segs(escena.pie)))) + '</p>';
     /* Documento que la ficha remite a consultar («(ver informes)», SRPA U2-L3, revisión del 18/11/2026): un botón que dice lo que
        hace y descarga la copia local que viaja en el paquete, con el nombre completo del documento al pie. Solo si la escena lo trae. */
     if (escena.descarga) cuerpo += '<p class="escena-descarga"><a class="boton-descarga" href="' + esc(escena.descarga.href) + '" download>' +
       '<i class="fas fa-file-arrow-down" aria-hidden="true"></i> ' + esc(escena.descarga.rotulo) + '</a><span class="descarga-nombre">' +
       esc(escena.descarga.nombre) + '</span></p>';
-    if (escena.tail.length) cuerpo += '<p class="caja-clave' + (conAvance ? ' tras-completar" hidden' : '"') + '><span class="clave-rotulo"><i class="fas fa-star" aria-hidden="true"></i> ' +
+    var esAlertaClave = !!datos.claveVentana && /^\s*alerta\b/i.test(segs(escena.tail));   // Ley 1826: la «Alerta», aparte y destacada
+    var claveLarga = datos.claveVentana && marcoAncho() && (segs(escena.tail).length > datos.claveVentana || esAlertaClave);   // Ley 1826: idea clave larga en ventana
+    if (escena.tail.length && claveLarga) cuerpo += '<button type="button" class="caja-clave clave-ventana' + (esAlertaClave ? ' es-alerta"' : conAvance ? ' tras-completar" hidden' : '"') + '><span class="clave-rotulo"><i class="fas ' + (esAlertaClave ? 'fa-triangle-exclamation' : 'fa-star') + '" aria-hidden="true"></i> ' +
+      (esAlertaClave ? 'Alerta' : conAvance ? 'Idea clave desbloqueada' : 'Idea clave') + '</span><span class="clave-abrir">' + mano + (esAlertaClave ? ' Clic para leer la alerta' : ' Clic para leer la idea clave') + '</span></button>';
+    else if (escena.tail.length) cuerpo += '<p class="caja-clave' + (conAvance ? ' tras-completar" hidden' : '"') + '><span class="clave-rotulo"><i class="fas fa-star" aria-hidden="true"></i> ' +
       (conAvance ? 'Idea clave desbloqueada' : 'Idea clave') + '</span>' + rico(segs(escena.tail)) + '</p>';
+    if (claveLarga && !raiz.dataset.claveVentana) {
+      raiz.dataset.claveVentana = '1';
+      raiz.addEventListener('click', function (e) { var bt = e.target.closest && e.target.closest('.clave-ventana'); if (bt) leer(bt.classList.contains('es-alerta') ? 'Alerta' : 'Idea clave', segs(escena.tail), null, bt); });
+    }
     raiz.className = 'ova layout-' + (ctx ? 'contexto' : escena.layout === 'balanza' ? 'fichas' : escena.layout) + (embebido ? ' embebido' : '') + (embebido && leccionPadre() && !botonCedido() ? ' pc-leccion' : '') + (datos.sinHuecos ? ' sin-huecos' : '') +
       (marcoAncho() ? ' marco-ancho' : '') + (escena.siluetas ? ' con-siluetas' : '') + (datos.ventanaAmplia ? ' ventana-amplia' : '') + (datos.huecosFinos ? ' huecos-finos' : '') + (escena.descargaMapa ? ' con-descarga' : '');
     /* Ilustración de la escena en un lugar que varía (Estándares interamericanos; Esteban, 28/10/2026: «a la izquierda, a la

@@ -47,20 +47,20 @@ h1{margin:9px 0 3px;font-size:38px;line-height:1.08;font-weight:800;color:var(--
 .tramos em{font-style:normal;margin-left:6px;white-space:nowrap}
 .confeti i{position:absolute;top:-16px;left:var(--x);width:8px;height:13px;border-radius:2px;background:var(--c);animation:cae 3.6s ease-in var(--d) both}
 @keyframes cae{0%{opacity:0;transform:translateY(0) rotate(0)}10%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translateY(470px) rotate(540deg)}}
-/* Pie con el curso y la unidad, como el de las demás páginas de la lección */
-.pie{position:absolute;left:0;right:0;bottom:0;min-height:68px;background:#fff;border-top:3px solid var(--negro);display:flex;align-items:center;justify-content:space-between;gap:28px;padding:8px 3.2%}
-.pie div{display:flex;align-items:center;gap:12px;min-width:0}
-.pie .curso{flex:1 1 52%}.pie .unidad{flex:1 1 44%;justify-content:flex-end;text-align:right}
-.pie .chip{flex:none;background:var(--negro);color:#fff;font-size:14px;font-weight:700;padding:4px 10px;border-radius:3px}
-.pie .unidad .chip{background:var(--teal)}
-.pie p{margin:0;font-size:13.5px;line-height:1.25;font-weight:700;color:var(--negro)}
-/* Hueco para el botón «Pantalla completa» de la lección (SCORM de genially_scorm.py; Ley 1826 y Tráfico, 22/11/2026): si cae en el
-   centro de este pie, el curso termina antes del botón y «Unidad N» empieza después, como el pie de justicia restaurativa (19/11).
-   En Genially, sin ese botón, el pie no cambia. */
-.pie.con-boton .curso{flex:0 1 auto;max-width:calc(var(--pc-izq) - 3.2% - 14px)}
-.pie.con-boton .unidad{position:absolute;left:calc(var(--pc-der) + 14px);right:3.2%;top:0;bottom:0;justify-content:flex-start;text-align:left}
+/* Pie igual al de Genially en las demás páginas de la lección (Ley 1826; revisión de los SCORM del 23/11/2026; herramientas/pie_fin_ley1826.py).
+   Medidas del pie de Genially en una diapositiva de 1200 × 675; fin.html empieza en y = 76 y mide 1200 × 599. Debajo de la escena
+   (que termina en y = 588) solo hay el crema de la página. El botón «Pantalla completa» de la lección (528, 617, 172 × 30) cae entre
+   el curso y la unidad, como en las demás páginas. */
+.pie{position:absolute;left:0;right:0;bottom:0;height:87px;background:var(--claro)}
+.pie div{display:contents}
+.pie .chip{position:absolute;top:29px;height:30px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;line-height:1.2;border-radius:6px;white-space:nowrap}
+.pie .curso .chip{left:calc(100% * 43 / 1200);width:72px;background:var(--negro)}
+.pie .unidad .chip{left:calc(100% * 758 / 1200);width:88px;background:var(--teal)}
+.pie p{position:absolute;margin:0;display:flex;align-items:center;text-align:left;font-weight:700;color:var(--negro)}
+.pie .curso p{left:calc(100% * 125 / 1200);width:calc(100% * 380 / 1200);top:29px;height:30px;font-size:13.5px;line-height:1.2}
+.pie .unidad p{left:calc(100% * 856 / 1200);width:calc(100% * 300 / 1200);top:21px;height:46px;font-size:13px;line-height:1.18}
 @container (max-width:640px){.hito,.bandera{display:none}.tarjeta{left:12px;right:12px;width:auto;top:12px;padding:15px 16px}h1{font-size:30px}.logros{grid-template-columns:1fr}
-  .pie{flex-direction:column;align-items:stretch;gap:6px;padding:8px 12px}.pie .unidad{justify-content:flex-start;text-align:left;flex-direction:row}.pie p{font-size:12.5px}}
+  .pie{height:auto;display:flex;flex-direction:column;gap:6px;padding:8px 12px}.pie div{display:flex;align-items:center;gap:10px}.pie .curso .chip,.pie .unidad .chip{position:static;width:auto;flex:none;padding:4px 10px}.pie .curso p,.pie .unidad p{position:static;width:auto;height:auto;flex:1 1 auto;font-size:12.5px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}.caminante{offset-distance:100%}.confeti{display:none}}
 </style>
 </head>
@@ -97,7 +97,7 @@ h1{margin:9px 0 3px;font-size:38px;line-height:1.08;font-weight:800;color:var(--
 </main>
 <script>
 (function(){
- var CLAVE="l1826-juego-u1-l5",MAX=255,TOTAL=5,N=["Observador", "Analista", "Fiscal del abreviado", "Referente en el procedimiento abreviado"],s={};
+ var CLAVE="l1826-juego-u1-l5",MAX=340,TOTAL=6,N=["Observador", "Analista", "Fiscal del abreviado", "Referente en el procedimiento abreviado"],s={};
  try{s=JSON.parse(localStorage.getItem(CLAVE)||'{}')}catch(e){}
  var v=Object.keys(s.v||{}).length,t=Object.keys(s.t||{}).length,p=v*10+t*25,f=p/MAX,k=f>=.8?3:f>=.45?2:f>=.15?1:0,$=function(i){return document.getElementById(i)};
  $('nivel').textContent=N[k];
@@ -108,17 +108,6 @@ h1{margin:9px 0 3px;font-size:38px;line-height:1.08;font-weight:800;color:var(--
  if(q)$('puntos').textContent=p;else{var ini=performance.now();(function c(a){var x=Math.min(1,(a-ini)/1500);$('puntos').textContent=Math.round(p*x);if(x<1)requestAnimationFrame(c)})(ini);}
  if(p>0&&!q){var C=["#30615B","#30615B","#003F5E","#8CD147"],o='';for(var j=0;j<26;j++)o+='<i style="--x:'+(j*3.9+2)+'%;--c:'+C[j%4]+';--d:'+(1.1+(j*7%13)*.09)+'s"></i>';$('confeti').innerHTML=o;}
 })();
-</script>
-<script>
-/* Hueco para el botón «Pantalla completa» de la lección (ver .pie.con-boton): solo si cae en el centro del pie, a lo ancho. */
-(function(){try{
- var b=parent.document.getElementById('ova-pc'),f=window.frameElement,pie=document.querySelector('.pie');
- if(!b||b.hidden||!f||!pie||pie.offsetWidth<640)return;
- var x=0,y=0;for(var e=f;e&&e!==b.offsetParent;e=e.offsetParent){x+=e.offsetLeft;y+=e.offsetTop}
- var izq=b.offsetLeft-x,der=izq+b.offsetWidth,arr=b.offsetTop-y,w=pie.offsetWidth;
- if(arr+b.offsetHeight<=pie.offsetTop||arr>=pie.offsetTop+pie.offsetHeight||izq<w*.3||der>w*.7)return;
- pie.classList.add('con-boton');pie.style.setProperty('--pc-izq',izq+'px');pie.style.setProperty('--pc-der',der+'px');
-}catch(e){}})();
 </script>
 </body>
 </html>

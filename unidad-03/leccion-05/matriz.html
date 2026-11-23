@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matriz de acreditación probatoria y estructuración del juicio oral</title>
+<link rel="stylesheet" href="../comun/assets/vendor/fontawesome.min.css">
+<link rel="stylesheet" href="../comun/assets/vendor/solid.min.css">
+<style>
+@font-face{font-family:Montserrat;src:url('../comun/assets/fonts/montserrat-latin.woff2') format('woff2');font-weight:400 800;font-display:swap}
+@font-face{font-family:Montserrat;src:url('../comun/assets/fonts/montserrat-latin-ext.woff2') format('woff2');font-weight:400 800;font-display:swap}
+:root{--marino:#003F5E;--verde:#30615B;--crema:#FBFBC5;--hielo:#E5F2F3;--blanco:#FFFFFF}
+html,body{margin:0;height:100%;background:var(--blanco);color:var(--marino);font-family:Montserrat,Arial,sans-serif}
+.marco{box-sizing:border-box;height:100%;display:flex;flex-direction:column;gap:8px;padding:8px 10px}
+.figura{position:relative;flex:1;min-height:0;margin:0;display:flex;align-items:center;justify-content:center;border:2px solid var(--hielo);
+  border-radius:14px;background:var(--blanco);overflow:hidden;cursor:zoom-in}
+.figura img{display:block;max-width:100%;max-height:100%;object-fit:contain;transition:transform .12s ease-out}
+.figura.lupa img{transform:scale(2.4)}
+.pie{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0}
+.descarga{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:2px solid var(--marino);border-radius:99px;background:var(--crema);
+  color:var(--marino);font:800 13px/1.3 Montserrat,Arial,sans-serif;text-decoration:none}
+.descarga:hover,.descarga:focus-visible{background:var(--marino);color:var(--blanco);outline:none}
+.nombre{font-size:12px;line-height:1.4;opacity:.85}
+.ayuda{font-size:12px;line-height:1.4;margin:0}
+/* En celular la figura toma solo su alto y el botón queda justo debajo, a la vista. */
+@media (max-width:699px){.figura{flex:0 0 auto;padding:6px 0}.marco{justify-content:center}}
+/* A lo ancho (marco de 1113 × 448), el pie va en una columna al lado: la figura gana todo el alto. */
+@media (min-width:700px){
+  .marco{flex-direction:row;align-items:stretch}
+  .pie{flex:0 0 190px;flex-direction:column;align-items:flex-start;justify-content:center;gap:12px}
+}
+</style>
+</head>
+<body>
+<main class="marco">
+<figure class="figura" id="figura"><img src="descargas/mapa-conceptual-matriz-juicio-oral.png" alt="Mapa conceptual: matriz de acreditación probatoria y estructuración del juicio oral"></figure>
+<p class="pie"><a class="descarga" href="descargas/mapa-conceptual-matriz-juicio-oral.png" download="Mapa conceptual - Matriz de acreditación probatoria y estructuración del juicio oral (Ley 1826 de 2017).png"><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Clic para descargar el mapa</a>
+<span class="ayuda"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i> Pase el cursor sobre el mapa para verlo con lupa.</span>
+<span class="nombre">Mapa conceptual - Matriz de acreditación probatoria y estructuración del juicio oral (Ley 1826 de 2017).png</span></p>
+</main>
+<script>
+/* Lupa al pasar el cursor (directriz de imágenes con mucho detalle: la original, en grande, con lupa). */
+(function () {
+  var f = document.getElementById('figura'), im = f.querySelector('img');
+  f.addEventListener('mousemove', function (e) {
+    var r = im.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) { f.classList.remove('lupa'); return; }
+    im.style.transformOrigin = ((e.clientX - r.left) / r.width * 100) + '% ' + ((e.clientY - r.top) / r.height * 100) + '%';
+    f.classList.add('lupa');
+  });
+  f.addEventListener('mouseleave', function () { f.classList.remove('lupa'); });
+})();
+</script>
+</body>
+</html>

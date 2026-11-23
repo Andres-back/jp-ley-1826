@@ -289,11 +289,11 @@ mark.ref-texto{background:#FBFBC5;box-shadow:inset 0 -2px 0 #8CD147}
 /* Recuadros solos en la caja (U3 L2 #4: «Tabs pequeños… TABLA», dos tablas): sin texto a la vista, los recuadros de una sola fila
    llenan la caja, con el ícono de lectura complementaria de la hoja de JP (fa-file-lines) y el rótulo más grande; no queda hueco. */
 @container ova (min-width:900px){
-  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-malla-fila{flex:1 1 auto}
-  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-celda{height:100%;align-items:center;justify-content:center;text-align:center;gap:16px;padding:22px 26px}
-  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-celda::before{content:"\f15c";font:900 56px/1 "Font Awesome 6 Free";color:var(--teal)}
-  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-celda-rot{font-size:19px;line-height:1.3}
-  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-celda-pie{margin-top:0;flex:0 0 auto}
+  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])):not(:has(.cmp-malla ~ .cmp-malla)) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-malla-fila{flex:1 1 auto}
+  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])):not(:has(.cmp-malla ~ .cmp-malla)) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-celda{height:100%;align-items:center;justify-content:center;text-align:center;gap:16px;padding:22px 26px}
+  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])):not(:has(.cmp-malla ~ .cmp-malla)) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-celda::before{content:"\f15c";font:900 56px/1 "Font Awesome 6 Free";color:var(--teal)}
+  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])):not(:has(.cmp-malla ~ .cmp-malla)) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-celda-rot{font-size:19px;line-height:1.3}
+  .marco-ancho .compacta.sin-lectura:not(:has(.cmp-ilus img[src*="ley-mapa-"])):not(:has(.cmp-malla ~ .cmp-malla)) .cmp-malla.sin-cab:not(:has(.cmp-malla-fila ~ .cmp-malla-fila)) .cmp-celda-pie{margin-top:0;flex:0 0 auto}
 }
 
 /* Línea de tiempo de pestañas (U1 L4 #2; hoja de Juan: «Crear una línea de tiempo, colocar fondo. Usar todos los numerales de la
@@ -370,3 +370,203 @@ mark.ref-texto{background:#FBFBC5;box-shadow:inset 0 -2px 0 #8CD147}
 .ova.marco-ancho.layout-contexto .contexto:has(> .ctx-arte img[src*="/p-"]){grid-template-columns:minmax(0,1.6fr) minmax(0,.6fr)}
 .ova.marco-ancho.layout-contexto .escenario.arte-volteado .contexto:has(> .ctx-arte img[src*="/p-"]){grid-template-columns:minmax(0,.6fr) minmax(0,1.6fr)}
 .ova.marco-ancho.layout-contexto .contexto > .ctx-arte img{object-fit:contain;max-width:100%;max-height:100%}
+
+/* ---------- Revisor visual del 23/11/2026 (plan/revision-2026-11-23/revisor/informe.md); solo Ley 1826 ---------- */
+/* A2: la idea clave larga va en un botón que abre su ventana (motor_ley1826.py), sin montar la escena. */
+.caja-clave.clave-ventana{display:flex;align-items:center;gap:12px;width:100%;margin:0;text-align:left;cursor:pointer;font:inherit;color:inherit}
+.caja-clave.clave-ventana .clave-abrir{margin-left:auto;font:800 12.5px/1.3 Montserrat,Arial,sans-serif;color:var(--marino);white-space:nowrap}
+.caja-clave.clave-ventana:hover,.caja-clave.clave-ventana:focus-visible{outline:3px solid var(--marino);outline-offset:2px}
+/* M1: a lo ancho, la ventana de lectura toma el ancho del marco (antes 640 px), con su letra que crece hasta caber. */
+@container ova (min-width:900px){
+  .ova.marco-ancho .lector:not(.en-hoja) .lector-caja:not(.lector-eje){width:min(960px,100%)}
+  .ova.marco-ancho .lector .lector-caja.lector-eje{width:min(1000px,100%)}
+  /* M2: fichas con figura: la columna de texto toma el espacio (antes 411 px junto a un panel de ícono de ~300). */
+  .ova.marco-ancho .panel-fichas.con-figura{grid-template-columns:minmax(0,1.6fr) minmax(0,.55fr)}
+  .ova.marco-ancho .escenario.arte-volteado .panel-fichas.con-figura{grid-template-columns:minmax(0,.55fr) minmax(0,1.6fr)}
+}
+/* === Correcciones del HTML (23/11/2026, tarde; agente de correcciones) === */
+/* Nota de fuente de una tabla («Nota. Elaboración propia.»): leyenda pequeña, tenue y alineada a la izquierda, bajo la tabla
+   (Samir: «un pop-up para ese mensaje tan corto no lo veo bien»). */
+.escena-pie{font:italic 500 11.5px/1.35 Roboto,Arial,sans-serif;color:var(--tinta);opacity:.78;text-align:left}
+/* Bajo la tabla explorada por filas (U1 L2 d2 A), en su propia línea y alineada a la izquierda, no encima del panel oscuro. */
+.ova.layout-tabla .escena-pie,.ova.embebido.layout-tabla .escena-pie,.ova.embebido.con-descarga.layout-tabla .escena-pie,
+.ova.layout-esquema .escena-pie,.ova.embebido.layout-esquema .escena-pie{position:static;align-self:flex-start;max-width:100%;margin:2px 0 0 2px}
+/* Parada del camino que no cabía arriba (motor_ley1826.py, regla 9): la tarjeta deja su ícono y queda más baja. */
+.esq-esc .esq-parada.esq-compacta .esquema-arte{display:none}
+.esq-esc .esq-parada.esq-compacta .esq-tarjeta{padding-top:7px;padding-bottom:7px;gap:3px}
+.ova.layout-esquema .escena-pie .nota-pie{font-size:inherit}
+/* «Mensaje de Alerta destacado» (hoja, U1 L2 d2): una sola caja de alerta a la vista, con el diseño de alerta de U2–U3 (marco marino,
+   sello «Alerta» con el triángulo de la hoja de íconos, fondo crema). */
+.contexto.ctx-alerta .ctx-texto{position:relative;outline:3px solid var(--marino);outline-offset:2px;background:var(--crema);border-radius:14px;
+  animation:alertaLate 1.8s ease-in-out 2}
+.contexto.ctx-alerta .ctx-icono{display:none}
+.contexto.ctx-alerta .lectura-eyebrow{display:inline-flex;align-items:center;gap:6px;width:max-content;padding:3px 12px;border-radius:12px;
+  background:var(--marino);color:#fff;font:800 14px/1.4 Montserrat,Arial,sans-serif}
+.contexto.ctx-alerta .lectura-eyebrow::before{content:"\f071";font:900 13px/1 "Font Awesome 6 Free"}
+@media (prefers-reduced-motion:reduce){.contexto.ctx-alerta .ctx-texto{animation:none}}
+/* Camino con las ramas de la hoja (motor_ley1826.py, regla 10; Samir, 23/11/2026, U4 L1): el rótulo de cada tramo arriba de sus
+   paradas; con «cielo», las tarjetas compactas arriba, a la misma altura, unidas a su parada del camino por una línea, sin tapar a
+   las personas; el beneficio de cada momento en una etiqueta. Solo a lo ancho: en celular las paradas son una lista. */
+@container ova (min-width:601px){
+  .esq-esc.con-tramos .esq-tramo{position:absolute;top:6px;left:calc(var(--xa) - 9.5%);width:calc(var(--xb) - var(--xa) + 19%);box-sizing:border-box;
+    z-index:4;padding:4px 10px;border:2px solid var(--marino);border-radius:10px;background:var(--crema);color:var(--marino);
+    font:800 12.5px/1.25 Montserrat,Arial,sans-serif;text-align:center}
+  .esq-esc.paradas-cielo .esq-parada,.esq-esc.paradas-cielo .esq-parada:nth-child(even),.esq-esc.paradas-cielo .esq-parada.visto,
+  .esq-esc.paradas-cielo .esq-parada.visto:nth-child(even){top:10px;height:calc(var(--y) - 10px);transform:translateX(-50%);justify-content:space-between}
+  .esq-esc.paradas-cielo.con-tramos .esq-parada,.esq-esc.paradas-cielo.con-tramos .esq-parada:nth-child(even),.esq-esc.paradas-cielo.con-tramos .esq-parada.visto,
+  .esq-esc.paradas-cielo.con-tramos .esq-parada.visto:nth-child(even){top:58px;height:calc(var(--y) - 58px)}
+  .esq-esc.paradas-cielo .esq-parada::before{content:"";position:absolute;left:50%;top:20px;bottom:16px;border-left:2px dashed var(--marino);opacity:.55;z-index:0}
+  .esq-esc.paradas-cielo .esq-tarjeta{position:relative;z-index:1;padding:7px 9px;gap:3px}
+  .esq-esc.paradas-cielo .esquema-arte .obj-svg{width:28px}
+  .esq-esc.paradas-cielo .esquema-rotulo{font-size:13px}
+  .esq-esc.paradas-cielo .esq-pin{position:relative;z-index:1}
+}
+@container ova (max-width:600px){
+  .esq-esc.con-tramos .esq-tramo{display:block;margin:4px 0 0;padding:3px 10px;border-radius:8px;background:var(--marino);color:#fff;
+    font:800 12px/1.3 Montserrat,Arial,sans-serif}
+  .esq-esc .esq-tarjeta:has(.esq-beneficio){flex-wrap:wrap}
+  .esq-esc .esq-beneficio{order:5;flex:1 1 100%;text-align:center}
+}
+.esq-beneficio{display:inline-block;margin-top:2px;padding:2px 8px;border-radius:9px;background:var(--crema);border:1.5px solid var(--marino);
+  color:var(--marino);font:800 11.5px/1.3 Montserrat,Arial,sans-serif}
+/* La parada «Alerta» lleva un solo rótulo de alerta (el sello): sin el dibujo del escudo encima (Samir, 23/11/2026, U4 L1). */
+.esq-esc .esq-parada.es-alerta .esquema-arte{display:none}
+.esq-esc .esq-parada.es-alerta .esq-tarjeta{padding-top:24px}
+/* B2 y B11 (revisores, U3 L3 d4 y d5): el aviso «Baje con la barra…» tapaba la última línea visible. La lectura deja libre su franja
+   y el aviso va en ella, debajo del texto. */
+.cmp-col:has(.cmp-baje:not([hidden])) .cmp-flujo{margin-bottom:34px}
+/* La nota de fuente de una tabla, al pie de la tabla en su ventana (motor_ley1826.py, regla 12). */
+.escena-pie.tabla-nota,.ova.embebido .escena-pie.tabla-nota,.ova.embebido.con-descarga .escena-pie.tabla-nota{position:static;display:block;max-width:none;margin:6px 0 0}
+/* Malla partida por subtítulos (generador: «partir_malla»; U3 L5 d2): cada subtítulo encima de sus recuadros. La fila con más
+   recuadros toma más alto; la letra de los recuadros es pareja (no crece en la fila de uno) y el dibujo de arriba se omite para que
+   el rótulo entre completo con su «Clic para leer». */
+.cmp-flujo:has(> .cmp-sub + .cmp-malla ~ .cmp-sub + .cmp-malla){gap:4px}
+.cmp-flujo:has(> .cmp-sub + .cmp-malla ~ .cmp-sub + .cmp-malla) > .cmp-sub{margin:2px 0 0}
+.cmp-flujo:has(> .cmp-sub + .cmp-malla ~ .cmp-sub + .cmp-malla) > .cmp-malla,
+.cmp-flujo:has(> .cmp-sub + .cmp-malla ~ .cmp-sub + .cmp-malla) .cmp-malla-fila,
+.cmp-flujo:has(> .cmp-sub + .cmp-malla ~ .cmp-sub + .cmp-malla) .cmp-malla-celda,
+.cmp-flujo:has(> .cmp-sub + .cmp-malla ~ .cmp-sub + .cmp-malla) .cmp-celda{flex:none;height:auto;min-height:0}
+.cmp-flujo:has(> .cmp-sub + .cmp-malla ~ .cmp-sub + .cmp-malla) .cmp-celda{padding:6px 10px!important;gap:3px}
+.cmp-flujo:has(> .cmp-sub + .cmp-malla ~ .cmp-sub + .cmp-malla) .cmp-celda-rot{font-size:13.5px!important;line-height:1.25!important}
+/* Globos de diálogo sobre las personas que conversan (motor_ley1826.py, regla 13; U2 L4 d2). */
+.puntos-lienzo .hotspot.globo .hotspot-n{width:48px!important;height:36px!important;border-radius:18px 18px 18px 4px!important;gap:3px}
+.puntos-lienzo .hotspot.globo[data-i="0"] .hotspot-n{border-radius:18px 18px 4px 18px!important}
+.puntos-lienzo .hotspot.globo .hotspot-n::before{content:"\f075";font:900 11px/1 "Font Awesome 6 Free";margin-right:3px}
+.puntos-lienzo .hotspot.globo .hotspot-n::after{border-radius:inherit!important}
+/* M6 del revisor del SCORM (U3 L2 d3): la etiqueta «Por leer» de una rama tapaba la primera línea de su rótulo («los» de la rama e).
+   El rótulo deja libre la franja de arriba, donde va la etiqueta. */
+.rama-mental:has(> .estado-lectura) .rama-rotulo{padding-top:7px}
+/* En las tarjetas que giran, el sello («Alerta», «Parágrafo») va a la derecha: a la izquierda tapaba el número de la tarjeta. */
+.giro .es-alerta .alerta-sello{left:auto;right:10px}
+/* === fin correcciones del HTML === */
+
+/* === Celular y «¡Siga aquí!» (correcciones 23/11/2026, agente celular) === */
+/* Hallazgos A5–A9 y M7 del revisor visual (plan/revision-2026-11-23/revisor/informe.md). Solo Ley 1826. Lo de celular va con
+   @container ova (max-width:600px); a lo ancho solo cambia la fila de partes con 10 o más (A5). La escena del celular se desplaza
+   hacia abajo (base.css: «la escena se desplaza y nada se superpone»): nada se encoge hasta montarse ni se corta. */
+
+/* A5 (todos los tamaños): con 10 o más partes, los puntos de la fila se achican y «Parte N de M» queda libre a la izquierda del globo
+   «¡Siga aquí!» (U2 L6 #4, artículo 284: 16 partes; los 16 puntos ocupaban 203 px y el globo caía sobre «Parte 1 de 16»). */
+.lectura-paginas .pag-puntos:has(> i:nth-child(10)){gap:3px}
+.lectura-paginas .pag-puntos:has(> i:nth-child(10)) > i{width:6px;height:6px}
+@keyframes globoArriba{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes escenaEntraOpaca{from{opacity:0}to{opacity:1}}
+
+@container ova (max-width:600px){
+  /* A5 y M7: en la fila angosta no cabe el globo a la izquierda del botón (tapaba «Parte N de M»). Va encima del botón, en su esquina,
+     como etiqueta, dentro de los 10 px de aire de la fila (la que traía 2 o 4 px pasa a 10); así se sigue viendo «¡Siga aquí!» (la
+     regla anterior lo ocultaba) y la lectura no pierde alto. */
+  .lectura-paginas:has(> .pag-siguiente){margin-top:10px!important}
+  .pag-siguiente.sigue-aqui::after{display:block;top:auto;right:6px;bottom:calc(100% - 8px);padding:0 6px;border-width:1.5px;font-size:9.5px;line-height:1.3;animation:globoArriba 1s ease-in-out infinite}
+
+  /* A7: la lámina con puntos va en una sola columna. Las reglas del marco ancho (1,6 / 0,8 y las de la figura «p-…») no estaban
+     limitadas a lo ancho y dejaban el texto y los puntos en 2/3 del celular, con el rótulo de cada punto letra por letra. */
+  .ova.marco-ancho.layout-contexto .contexto:has(> .ctx-arte),
+  .ova.marco-ancho.layout-contexto .escenario.arte-volteado .contexto:has(> .ctx-arte),
+  .ova.marco-ancho.layout-contexto .contexto:has(> .ctx-arte img[src*="/p-"]),
+  .ova.marco-ancho.layout-contexto .escenario.arte-volteado .contexto:has(> .ctx-arte img[src*="/p-"]),
+  .marco-ancho .escenario.arte-volteado .contexto:has(> .ctx-arte img[src*="/p-"]){grid-template-columns:minmax(0,1fr)}
+  .ova .escenario.arte-volteado .contexto{grid-template-areas:"cab" "pun" "txt"}
+  /* Los puntos, uno por fila y a todo el ancho; arriba, aire para su sello «Por leer / Leída» (se cortaba contra el borde). */
+  .ova .contexto .ctx-puntos{flex-direction:column;flex-wrap:nowrap;padding-top:10px}
+  .ova .contexto .ctx-puntos > .ctx-punto{flex:none;width:100%}
+  /* En una columna el texto quedaba más bajo y dejaba un hueco debajo: la lámina toma el alto de la escena y la letra crece hasta
+     llenar su caja (encajarTexto del motor, que mide la caja). */
+  .ova .bloque:has(> .contexto){flex:1 1 0;min-height:300px}
+  /* Fichas: el sello «Por leer / Leída» de la primera fila se cortaba arriba. Con dos fichas (objetivo e introducción de U2 L3 y
+     U4 L1–L4), el panel dejaba un hueco debajo: toma el alto de la escena y la letra crece hasta llenarlo. */
+  .ova .bloque:has(> .panel-fichas) > .fichas{padding-top:10px}
+  .ova .bloque:has(> .panel-fichas):not(:has(> .fichas > .ficha:nth-child(3))){flex:1 1 0;min-height:300px}
+  .ova .bloque:has(> .panel-fichas):not(:has(> .fichas > .ficha:nth-child(3))) > .panel-fichas{flex:1 1 0;min-height:200px}
+  /* Fichas con la figura a la izquierda (U1 L3 #2, pestaña D): la regla del motor para la figura volteada no se limita a lo ancho y
+     dejaba el texto en una columna de 133 px; en el celular, una columna. */
+  .ova .escenario.arte-volteado .panel-fichas.con-figura{grid-template-columns:minmax(0,1fr)}
+  /* Sellos «Por leer / Leída» de la primera fila de una línea de tiempo o de un eje: se cortaban contra el borde de arriba. */
+  .ova .bloque-linea,.ova .bloque-eje{padding-top:12px}
+  /* Rótulos de la línea de tiempo (U2 L2 #2): «procedimentales:» no cabía en su columna de 78 px y tocaba «Descubrimiento». */
+  .ova .linea .paso-rotulo{font-size:10px}
+  /* Eje con pocas categorías (U2 L4 #6, pestaña B: tres): sin el panel de las dimensiones (oculto en el celular) quedaba un hueco
+     debajo; las categorías se reparten el alto de la escena. */
+  .ova .bloque-eje{flex:1 1 0;min-height:220px}
+
+  /* A6, rejillas: una columna. Cada recuadro lleva su rótulo a la izquierda y su ilustración entera a la derecha (hasta 4 recuadros),
+     y los recuadros crecen hasta llenar la escena, sin hueco debajo. Con 5 o más, sin ilustración, para que quepan. Sin barra
+     propia: si no caben, se desplaza la escena. */
+  .ova .bloque:has(> .rejilla){flex:1 0 auto}
+  .ova .rejilla{display:flex!important;flex-direction:column;gap:8px;flex:1 0 auto;min-height:0;overflow:visible;padding-bottom:6px}
+  .ova .rejilla .celda{flex:1 0 auto;flex-direction:row;align-items:center;gap:10px;min-height:58px;padding:8px 10px 8px 12px;grid-row:auto!important;grid-column:auto!important}
+  .ova .rejilla .celda .celda-cab{flex:1 1 auto;min-width:0;align-items:center}
+  .ova .rejilla .celda .celda-foto{display:block;position:relative;flex:0 0 32%;align-self:stretch;min-height:70px}
+  .ova .rejilla .celda .celda-foto > img,.ova .rejilla .celda .celda-foto > .obj-svg{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:contain}
+  .ova .rejilla:has(> .celda:nth-child(5)) .celda .celda-foto{display:none}
+  .ova .rejilla:has(> .celda:nth-child(5)) .celda{min-height:52px}
+  /* La «Alerta» de la rejilla: el sello arriba, junto al número (a la derecha caía sobre la ilustración). */
+  .ova .rejilla .celda.es-alerta .alerta-sello{top:6px;left:44px;right:auto}
+  .ova .rejilla .celda.es-alerta .celda-cab{padding-top:20px}
+
+  /* A6, mallas de la página compacta: una columna; cada recuadro con el alto de su rótulo y de «Clic para leer» (se encogían a una
+     línea y se montaban). El bloque crece con su contenido y la escena se desplaza. */
+  .ova .bloque-compacta,.ova .compacta{flex:1 0 auto;min-height:0}
+  .ova .compacta .cmp-flujo{flex:1 0 auto}
+  .ova .compacta .cmp-malla.cmp-malla,.ova .compacta .cmp-malla.cmp-malla .cmp-malla-fila,.ova .compacta .cmp-malla.cmp-malla .cmp-malla-celda{flex:1 0 auto;min-height:auto;height:auto}
+  .ova .compacta .cmp-malla.cmp-malla .cmp-celda{flex:1 0 auto;min-height:0;height:auto!important;padding:9px 12px;gap:4px}
+  .ova .compacta .cmp-malla.cmp-malla .cmp-celda-rot{font-size:14.5px;line-height:1.25}
+  /* U2 L6 #13, matriz en imagen: el recuadro a todo el ancho y, encima, la matriz entera (no se veía y el recuadro quedaba de 60 px). */
+  .marco-ancho .compacta.con-ilus:has(.cmp-ilus img[src*="ley-mapa-"]){grid-template-columns:minmax(0,1fr)}
+  .marco-ancho .compacta.con-ilus:has(.cmp-ilus img[src*="ley-mapa-"]) .cmp-lado{display:flex;flex-direction:column;justify-content:center}
+  .marco-ancho .compacta.con-ilus:has(.cmp-ilus img[src*="ley-mapa-"]) .cmp-ilus{flex:none;height:auto}
+  .marco-ancho .compacta.con-ilus:has(.cmp-ilus img[src*="ley-mapa-"]) .cmp-ilus img{width:100%;height:auto;max-height:none}
+
+  /* A9: la ventana del eje ocupa todo el alto del celular (no solo el escenario: «.ova» contiene lo fijo por ser contenedor) y sus
+     dos columnas toman el alto de su texto; la letra baja hasta caber (motor) y, si aun así no cabe, se desplaza la ventana, nunca una
+     columna recortada. */
+  .lector:has(> .lector-caja.lector-eje){position:fixed;inset:0 0 40px;z-index:40;padding:8px;border-radius:0}   /* abajo, la franja de botones */
+  /* La entrada de la escena con «translate» hacía del escenario el contenedor de lo fijo; en las escenas del eje entra solo con
+     opacidad, para que la ventana pueda ocupar todo el alto. */
+  .ova .escenario:has(.eje-lista){animation-name:escenaEntraOpaca}
+  .lector .lector-caja.lector-eje .eje-comparado{flex:none;overflow:visible;min-height:auto}
+  /* (Repiten las de «A5–A9: celular» de la sección del revisor, para que esta sección no dependa de ellas.) */
+  .lector .lector-caja.lector-eje{max-height:100%;height:100%;overflow-y:auto}
+  .lector-eje .eje-comparado{display:flex;flex-direction:column;gap:10px;height:auto}
+  .lector-eje .eje-col{max-height:none;overflow:visible;height:auto}
+  /* A8: con 10 o más pestañas, la fila pasa a varias líneas dentro del ancho (no corre la escena de lado). */
+  .pestanas.n10,.pestanas.n11,.pestanas.n12,.pestanas.n13,.pestanas.n14,.pestanas.n15,.pestanas.n16,.pestanas.n17,.pestanas.n18,.pestanas.n19,.pestanas.n20{flex-wrap:wrap;max-width:100%}
+
+  /* Mapa del camino (paisaje) en celular: las paradas leídas en posición par seguían en absoluto (faltaba ese selector en la regla
+     de celular del estándar) y se montaban sobre las demás. */
+  .esq-esc .esq-parada.visto:nth-child(even){position:static;transform:none;width:100%!important;max-width:none!important;flex:1;min-height:0}
+  /* Y con la idea clave o la descarga encima, cinco paradas se apretaban en 250 px y cortaban su rótulo: las paradas toman el alto de
+     su rótulo, el mapa crece con ellas (el paisaje queda arriba) y la escena se desplaza. El sello «Alerta» va encima del rótulo. */
+  .ova .bloque:has(> .esq-esc){flex:1 0 auto}
+  .ova .esq-esc{flex:1 0 auto;min-height:0}
+  .ova .esq-esc .esquema-hijos{position:relative;inset:auto;flex:1 0 auto;gap:14px;padding:64px 10px 10px}
+  /* Cada parada es la referencia de su «Clic aquí» (en estático, la etiqueta se quedaba arriba del mapa, cortada, aunque la parada
+     siguiente fuera otra). */
+  .ova .esq-esc .esq-parada,.ova .esq-esc .esq-parada:nth-child(even),.ova .esq-esc .esq-parada.visto,.ova .esq-esc .esq-parada.visto:nth-child(even){position:relative;left:auto;top:auto;flex:1 0 auto;min-height:44px}
+  .ova .esq-esc .esq-parada.esq-sig:not(.visto) .esq-clic{top:-13px}
+  .ova .esq-esc .esq-tarjeta{flex:1 0 auto}
+  .ova .esq-esc .esq-parada.es-alerta .esq-tarjeta{padding-top:26px}
+  .ova .esq-esc .esq-tarjeta .alerta-sello{top:4px;left:48px}
+}
+@media (prefers-reduced-motion:reduce){.pag-siguiente.sigue-aqui::after{animation:none!important}}
+/* === fin celular === */
