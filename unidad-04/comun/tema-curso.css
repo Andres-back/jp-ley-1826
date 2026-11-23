@@ -458,6 +458,39 @@ mark.ref-texto{background:#FBFBC5;box-shadow:inset 0 -2px 0 #8CD147}
 .rama-mental:has(> .estado-lectura) .rama-rotulo{padding-top:7px}
 /* En las tarjetas que giran, el sello («Alerta», «Parágrafo») va a la derecha: a la izquierda tapaba el número de la tarjeta. */
 .giro .es-alerta .alerta-sello{left:auto;right:10px}
+/* Nota al pie con hover (motor_ley1826.py, regla 15; hoja de Juan, U2 L6 d4): la llamada «¹» se ve como botón; al pasar el cursor,
+   al enfocarla o al tocarla se abre su globo con la nota completa, que se desplaza si es larga. */
+.nota-hover{position:relative;display:inline-block;min-width:1.1em;padding:0 3px;margin:0 1px;border-radius:6px;background:var(--crema);
+  border:1.5px solid var(--marino);color:var(--marino);font-weight:800;line-height:1.2;cursor:help;vertical-align:super;font-size:.8em}
+.nota-hover:focus-visible{outline:3px solid #8CD147;outline-offset:2px}
+.nota-globo{display:none;position:fixed;z-index:60;box-sizing:border-box;overflow:auto;padding:10px 14px;border:2px solid var(--marino);
+  border-radius:12px;background:#fff;box-shadow:0 8px 24px #0003;color:var(--tinta);font:400 13.5px/1.5 Roboto,Arial,sans-serif;
+  text-align:left;vertical-align:baseline;cursor:auto}
+.nota-globo-rot{display:block;margin:0 0 4px;font:800 12px/1.3 Montserrat,Arial,sans-serif;color:var(--marino)}
+.nota-hover:hover .nota-globo,.nota-hover:focus .nota-globo,.nota-hover:focus-within .nota-globo,.nota-hover.abierta .nota-globo{display:block}
+/* Mapa de dos niveles (regla 15; U2 L4 d7): los literales esperan atenuados, con candado, hasta que se lee el 5.1. */
+.rama-espera{opacity:.45;filter:grayscale(.6);pointer-events:none}
+.rama-espera::after{content:"Se abre al leer el 5.1";position:absolute;right:8px;bottom:-9px;padding:1px 8px;border-radius:9px;background:var(--marino);color:#fff;font:700 10.5px/1.5 Montserrat,Arial,sans-serif;text-transform:none;letter-spacing:0}
+.rama-padre:not(.visto){animation:alertaLate 1.8s ease-in-out infinite}
+.rama-mental{transition:opacity .5s ease,filter .5s ease}
+@media (prefers-reduced-motion:reduce){.rama-padre:not(.visto){animation:none}}
+/* Puntos redondos con siete elementos (U2 L3 d2): la leyenda entra completa, en dos columnas y con letra más pequeña. */
+@container ova (min-width:900px){
+  .puntos-escena:has(.puntos-leyenda > li:nth-child(7)) .puntos-leyenda{display:grid;grid-template-columns:1fr;gap:5px;align-content:center}
+  .puntos-escena:has(.puntos-leyenda > li:nth-child(7)) .punto-leyenda{padding:5px 10px 5px 8px;min-height:0}
+  .puntos-escena:has(.puntos-leyenda > li:nth-child(7)) .leyenda-rotulo{font-size:12.5px;line-height:1.25}
+  .puntos-escena:has(.puntos-leyenda > li:nth-child(7)) .punto-leyenda .hotspot-n{width:24px;height:24px;font-size:12px}
+}
+@container ova (max-width:600px){.rama-espera::after{bottom:auto;top:-9px;left:8px;right:auto}}
+/* Lectura ancha (reglas 16–17; Samir: «no fragmentar tanto la información»): a lo ancho, cada parte reúne más ideas (hasta ~950
+   caracteres por oración completa) en una caja más alta, con la letra de siempre. En la línea de tiempo, la franja de los momentos se
+   compacta (sin dibujos) y la caja de lectura toma todo el ancho, sin el dibujo de la derecha. */
+@container ova (min-width:900px){
+  .ova.lectura-ancha.layout-linea .ruta-lectura .ruta-arte{display:none}
+  .ova.lectura-ancha.layout-linea .linea .paso-arte,.ova.lectura-ancha.layout-linea .linea .paso-n{display:none}
+  .ova.lectura-ancha.layout-linea .linea{min-height:0}
+  .ova.lectura-ancha.layout-linea .linea .paso{min-height:0;padding-top:4px;padding-bottom:4px}
+}
 /* === fin correcciones del HTML === */
 
 /* === Celular y «¡Siga aquí!» (correcciones 23/11/2026, agente celular) === */

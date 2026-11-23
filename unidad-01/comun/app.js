@@ -533,7 +533,7 @@
      partes de uno o dos tramos, con «Seguir leyendo» y su posición; nada se recorta y todo queda en la página. «ajustar»
      vuelve a encajar la letra en cada parte. */
   function dosificar(caja, ajustar, limite) {
-    var lim = limite || datos.pagina, t = caja && caja.querySelector('.lectura-texto'), viejo = caja && caja.querySelector('.lectura-paginas');
+    var lim = limite || (escena && escena.paginaAncha && anchoReal() ? escena.paginaAncha : datos.pagina), t = caja && caja.querySelector('.lectura-texto'), viejo = caja && caja.querySelector('.lectura-paginas');
     if (viejo) viejo.remove();
     if (caja) caja.classList.remove('lectura-pendiente');
     /* datos.desplazarLectura (Terminaciones; Esteban y Juan, 19/11/2026: «mucho Seguir leyendo… mucho clic, que es lo que no
@@ -2318,7 +2318,7 @@
       c.addEventListener('click', function () {
         /* El botón se hunde y rebota, y saltan chispas, mientras la ventana nace de él (Esteban, 31/10/2026: apertura premium). */
         if (!quieto && c.animate) { c.animate([{ scale: '1' }, { scale: '.95' }, { scale: '1.03' }, { scale: '1' }], { duration: 380, easing: 'ease-out' }); chispas(c, { n: 10, d: 44, retraso: 60 }); }
-        var it = b.items[Number(c.dataset.i)]; leer(it.label, segs(it.segs), it.obj, c); marcar(c.dataset.id);
+        var it = b.items[Number(c.dataset.i)]; leer(it.label, segs(it.segs), it.obj, c, null, it.tabla ? cmpVentanaTabla(it) : null); marcar(c.dataset.id);
       });
     });
   }
@@ -3573,7 +3573,57 @@
   }
 
   /* ---------- Escena ---------- */
+  /* Ley 1826 (hoja de Juan; Samir, 23/11/2026, «Sí, después»): nota al pie con hover y mapa de dos niveles. */
+  var nhObs = null;
+  function notasHover() {
+    if (nhObs || !window.MutationObserver) return;
+    function ubicar(b) {
+      var r = b.getBoundingClientRect(), g = b.querySelector('.nota-globo'), W = Math.min(620, innerWidth - 24);
+      g.style.width = W + 'px'; g.style.left = Math.max(12, Math.min(r.left - 20, innerWidth - W - 12)) + 'px';
+      if (r.top > innerHeight / 2) { g.style.top = 'auto'; g.style.bottom = (innerHeight - r.top + 8) + 'px'; g.style.maxHeight = Math.max(120, r.top - 24) + 'px'; }
+      else { g.style.bottom = 'auto'; g.style.top = (r.bottom + 8) + 'px'; g.style.maxHeight = Math.max(120, innerHeight - r.bottom - 24) + 'px'; }
+    }
+    function envolver() {
+      var nh = escena && escena.notaHover; if (!nh) return;
+      raiz.querySelectorAll('.lectura-texto').forEach(function (el) {
+        if (el.querySelector('.nota-hover') || el.closest('.nota-globo') || el.textContent.trim().indexOf(nh.marca) === 0) return;
+        var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n;
+        while ((n = w.nextNode())) {
+          var i = n.nodeValue.indexOf(nh.marca); if (i < 0) continue;
+          var r = n.splitText(i); r.splitText(nh.marca.length);
+          var b = document.createElement('span'); b.className = 'nota-hover'; b.tabIndex = 0; b.setAttribute('role', 'button');
+          b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-label', 'Nota al pie ' + nh.marca + ': pase el cursor o haga clic para leerla');
+          b.innerHTML = esc(nh.marca) + '<span class="nota-globo" role="tooltip"><span class="nota-globo-rot">Nota al pie</span>' + rico(seg(nh.seg)) + '</span>';
+          r.parentNode.replaceChild(b, r);
+          b.addEventListener('mouseenter', function () { ubicar(b); });
+          b.addEventListener('focus', function () { ubicar(b); });
+          b.addEventListener('click', function (ev) { if (ev.target.closest('.nota-globo')) return; ev.stopPropagation(); ubicar(b); var a = b.classList.toggle('abierta'); b.setAttribute('aria-expanded', String(a)); });
+          b.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); b.click(); } if (ev.key === 'Escape') { b.classList.remove('abierta'); b.setAttribute('aria-expanded', 'false'); } });
+          break;
+        }
+      });
+    }
+    nhObs = new MutationObserver(function () { envolver(); dosNiveles(); });
+    nhObs.observe(raiz, { childList: true, subtree: true });
+  }
+  /* Mapa de dos niveles (escena.hijos = {"<padre>": [hijos]}): los hijos esperan, atenuados y con candado, hasta que se lee el
+     padre; entonces se despliegan. */
+  function dosNiveles() {
+    var hj = escena && escena.hijos; if (!hj) return;
+    Object.keys(hj).forEach(function (p) {
+      var padre = raiz.querySelector('.bloque [data-i="' + p + '"]'); if (!padre) return;
+      var leido = padre.classList.contains('visto');
+      hj[p].forEach(function (h) {
+        raiz.querySelectorAll('.bloque [data-i="' + h + '"]').forEach(function (c) {
+          if (leido) { if (c.classList.contains('rama-espera')) { c.classList.remove('rama-espera'); c.disabled = false; c.classList.add('rama-desplegada'); } }
+          else if (!c.classList.contains('rama-espera') && !c.classList.contains('rama-desplegada')) { c.classList.add('rama-espera'); c.disabled = true; c.title = 'Se despliega al leer «' + (padre.textContent || '').trim().slice(0, 40) + '»'; }
+        });
+      });
+      padre.classList.add('rama-padre');
+    });
+  }
   function render() {
+    notasHover();
     var propia = datos.scenes[actual];
     padre = propia.pestanas && propia.pestanas.length ? propia : null;
     if (padre && (pestana < 0 || pestana >= padre.pestanas.length)) pestana = 0;
@@ -3630,7 +3680,7 @@
       raiz.addEventListener('click', function (e) { var bt = e.target.closest && e.target.closest('.clave-ventana'); if (bt) leer(bt.classList.contains('es-alerta') ? 'Alerta' : 'Idea clave', segs(escena.tail), null, bt); });
     }
     raiz.className = 'ova layout-' + (ctx ? 'contexto' : escena.layout === 'balanza' ? 'fichas' : escena.layout) + (embebido ? ' embebido' : '') + (embebido && leccionPadre() && !botonCedido() ? ' pc-leccion' : '') + (datos.sinHuecos ? ' sin-huecos' : '') +
-      (marcoAncho() ? ' marco-ancho' : '') + (escena.siluetas ? ' con-siluetas' : '') + (datos.ventanaAmplia ? ' ventana-amplia' : '') + (datos.huecosFinos ? ' huecos-finos' : '') + (escena.descargaMapa ? ' con-descarga' : '');
+      (marcoAncho() ? ' marco-ancho' : '') + (escena.siluetas ? ' con-siluetas' : '') + (datos.ventanaAmplia ? ' ventana-amplia' : '') + (datos.huecosFinos ? ' huecos-finos' : '') + (escena.descargaMapa ? ' con-descarga' : '') + (escena.paginaAncha ? ' lectura-ancha' : '');
     /* Ilustración de la escena en un lugar que varía (Estándares interamericanos; Esteban, 28/10/2026: «a la izquierda, a la
        derecha, en el medio o atrás… de forma embebida para que no sea invasivo»). «arte» = {img, pos}: «izq» o «der», una columna
        propia junto a la mediación; «fondo», la ilustración tenue en la esquina inferior, detrás y sin recibir clics; «centro», en
