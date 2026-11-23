@@ -361,3 +361,12 @@ mark.ref-texto{background:#FBFBC5;box-shadow:inset 0 -2px 0 #8CD147}
   .marco-ancho .escenario.arte-lado:has(> .arte-escena img[src*="terminos-reloj"]) > .arte-escena{flex:0 0 30%;align-items:center;background:radial-gradient(ellipse 80% 40% at 50% 70%,var(--hielo) 0 99%,transparent 100%)}
   .marco-ancho .escenario.arte-lado:has(> .arte-escena img[src*="terminos-reloj"]) > .arte-escena img{width:100%;max-height:92%}
 }
+/* Láminas con texto ancho y figura angosta (Samir, 23/11/2026, sobre U3 L3 p. 3: «aprovechemos bien el espacio, podemos ampliar el
+   cuadro de texto para que no haya que dar tanto clic»): en toda lámina a lo ancho, el texto toma el espacio y la ilustración va en
+   una columna estrecha, entera (object-fit: contain, sin cortar la cabeza). Las verticales «p-…» ya tenían 1,6 / 0,6 (regla de arriba);
+   las apaisadas pasan de la mitad del ancho a 1,6 / 0,8. Volteada (persona a la izquierda), al revés. */
+.ova.marco-ancho.layout-contexto .contexto:has(> .ctx-arte){grid-template-columns:minmax(0,1.6fr) minmax(0,.8fr)}
+.ova.marco-ancho.layout-contexto .escenario.arte-volteado .contexto:has(> .ctx-arte){grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr)}
+.ova.marco-ancho.layout-contexto .contexto:has(> .ctx-arte img[src*="/p-"]){grid-template-columns:minmax(0,1.6fr) minmax(0,.6fr)}
+.ova.marco-ancho.layout-contexto .escenario.arte-volteado .contexto:has(> .ctx-arte img[src*="/p-"]){grid-template-columns:minmax(0,.6fr) minmax(0,1.6fr)}
+.ova.marco-ancho.layout-contexto .contexto > .ctx-arte img{object-fit:contain;max-width:100%;max-height:100%}
