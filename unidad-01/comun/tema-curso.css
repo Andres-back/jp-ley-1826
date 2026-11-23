@@ -489,7 +489,11 @@ mark.ref-texto{background:#FBFBC5;box-shadow:inset 0 -2px 0 #8CD147}
   .ova.lectura-ancha.layout-linea .ruta-lectura .ruta-arte{display:none}
   .ova.lectura-ancha.layout-linea .linea .paso-arte,.ova.lectura-ancha.layout-linea .linea .paso-n{display:none}
   .ova.lectura-ancha.layout-linea .linea{min-height:0}
-  .ova.lectura-ancha.layout-linea .linea .paso{min-height:0;padding-top:4px;padding-bottom:4px}
+  .ova.lectura-ancha.layout-linea .linea .paso{min-height:0;padding-top:18px;padding-bottom:2px}
+  /* La línea va arriba y los títulos debajo, sin que nada los pise; «Por leer» queda junto al título, a su derecha. */
+  .ova.lectura-ancha.layout-linea .linea .camino{top:8px;bottom:auto}
+  /* «Por leer» no se repite en la franja: cada momento leído lleva su marca de visto y la exploración cuenta los que faltan. */
+  .ova.lectura-ancha.layout-linea .linea .estado-lectura{display:none}
 }
 /* === fin correcciones del HTML === */
 
