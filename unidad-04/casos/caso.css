@@ -1,0 +1,120 @@
+/* Caso con audio (Ley 1826, 22/11/2026; Juan, reunión del 21/11: «colócale un audio a lo que es la parte del casito»).
+   Escena de 767 × 566 (iframe de Genially) que crece hasta la pantalla completa; sin desplazamiento. Dos lados: la escena que
+   representa lo que se narra (ilustración aprobada + datos que aparecen) y la transcripción que se revela con la voz. Estilo
+   minimalista con bastante contenido (gusto de JP): fondo blanco, color solo para la jerarquía. Colores: paleta oficial del curso. */
+@font-face{font-family:Montserrat;src:url("../comun/assets/fonts/montserrat-latin.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:Montserrat;src:url("../comun/assets/fonts/montserrat-latin-ext.woff2") format("woff2");font-weight:100 900;unicode-range:U+0100-024F;font-display:swap}
+@font-face{font-family:Roboto;src:url("../comun/assets/fonts/roboto-latin.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:Roboto;src:url("../comun/assets/fonts/roboto-latin-ext.woff2") format("woff2");font-weight:100 900;unicode-range:U+0100-024F;font-display:swap}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#fff}
+body{font:400 15px/1.5 Roboto,Arial,sans-serif;color:var(--carbon)}
+.caso{container:caso/inline-size;position:relative;display:flex;flex-direction:column;gap:8px;width:100%;height:100vh;max-height:100vh;padding:10px 14px;overflow:hidden;background:#fff}
+button{font-family:inherit}
+button:focus-visible,.pal:focus-visible{outline:3px solid var(--naranja);outline-offset:2px}
+
+/* Cabecera */
+.cab{display:flex;align-items:center;gap:11px}
+.cab-ico{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--naranja);color:#fff;font-size:16px}
+.cab-txt{min-width:0}
+.eyebrow{margin:0;font:700 11px/1.2 Montserrat,Arial,sans-serif;color:var(--teja)}
+.titulo{margin:1px 0 0;font:800 17px/1.2 Montserrat,Arial,sans-serif;color:var(--marron)}
+.ver-video{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border:1.5px solid var(--marron);border-radius:99px;
+  background:#fff;color:var(--marron);font:700 11.5px/1 Montserrat,Arial,sans-serif;cursor:pointer}
+.ver-video:hover{background:color-mix(in srgb,var(--amarillo) 40%,#fff)}
+
+/* Pasos: planteamiento y resolución */
+.pasos{display:flex;gap:8px}
+.paso{flex:1;display:flex;align-items:center;gap:9px;padding:6px 11px;border:1.5px solid color-mix(in srgb,var(--carbon) 16%,#fff);border-radius:12px;background:#fff;
+  color:var(--marron);font:700 12.5px/1.2 Montserrat,Arial,sans-serif;text-align:left;cursor:pointer}
+.paso .n{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:color-mix(in srgb,var(--amarillo) 70%,#fff);font:800 12px/1 Montserrat,Arial,sans-serif}
+.paso small{display:block;font:500 10.5px/1.2 Roboto,Arial,sans-serif;color:var(--gris)}
+.paso[aria-selected="true"]{border-color:var(--marron);box-shadow:inset 0 -3px 0 var(--marron)}
+.paso[aria-selected="true"] .n{background:var(--marron);color:#fff}
+.paso .visto{margin-left:auto;color:var(--naranja);visibility:hidden}
+.paso.escuchado .visto{visibility:visible}
+
+/* Cuerpo: escena y transcripción */
+.cuerpo{flex:1;min-height:0;display:grid;grid-template-columns:42% 1fr;gap:12px}
+.escena{position:relative;min-height:0;display:flex;flex-direction:column;border-radius:16px;background:color-mix(in srgb,var(--celeste) 70%,#fff);overflow:hidden}
+.lienzo-esc{position:relative;flex:1;min-height:0}
+.capa-esc{position:absolute;inset:4px 6px 0;opacity:0;transition:opacity .55s ease}
+.capa-esc.ver{opacity:1}
+.capa-esc svg{width:100%;height:100%;display:block}
+.capa-esc.foto{inset:0}
+.capa-esc img{width:100%;height:100%;display:block;object-fit:contain;object-position:center}
+.sonando .capa-esc.foto.ver img{animation:acerca 14s ease-in-out infinite alternate}
+@keyframes acerca{from{transform:scale(1)}to{transform:scale(1.06)}}
+.capa-esc.ver .actor{animation:actor .55s cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--k) * .12s)}
+@keyframes actor{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.datos{list-style:none;margin:0;padding:6px 8px 8px;display:flex;flex-direction:column;gap:5px;min-height:0}
+.dato{display:flex;align-items:flex-start;gap:8px;padding:6px 9px;border-radius:10px;background:#fff;border-left:4px solid var(--naranja);
+  font:500 12.5px/1.3 Roboto,Arial,sans-serif;color:var(--carbon);box-shadow:0 1px 0 color-mix(in srgb,var(--carbon) 12%,transparent)}
+.dato i{flex:none;width:16px;margin-top:1px;text-align:center;color:var(--naranja)}
+.dato b{font:700 12px/1.3 Montserrat,Arial,sans-serif;color:var(--marron)}
+.dato.rotulo{border-left-color:var(--marron)}.dato.rotulo i{color:var(--marron)}
+.dato.persona i,.dato.lugar i{color:var(--teja)}
+.dato.entra{animation:entra .45s cubic-bezier(.2,.8,.3,1.2)}
+@keyframes entra{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+
+.trans{position:relative;min-height:0;display:flex;flex-direction:column;padding:8px 14px 6px;border-radius:16px;border:1.5px solid color-mix(in srgb,var(--carbon) 14%,#fff)}
+.trans-cab{display:flex;align-items:center;gap:7px;margin:0 0 4px;font:700 11px/1 Montserrat,Arial,sans-serif;color:var(--gris)}
+.vivo{width:8px;height:8px;border-radius:50%;background:color-mix(in srgb,var(--carbon) 25%,#fff)}
+.sonando .vivo{background:var(--naranja);animation:vivo 1.2s ease-in-out infinite}
+@keyframes vivo{50%{opacity:.3}}
+.todo{margin-left:auto;padding:3px 9px;border:1px solid color-mix(in srgb,var(--carbon) 20%,#fff);border-radius:99px;background:#fff;color:var(--marron);
+  font:700 10.5px/1.2 Montserrat,Arial,sans-serif;cursor:pointer}
+.texto{flex:1;min-height:0;overflow:hidden}
+.texto p{margin:0 0 .5em;font-size:var(--fs,16px);line-height:1.55;text-align:left}
+.texto p.meta{font-size:calc(var(--fs,16px) * .9)}
+.pal{color:color-mix(in srgb,var(--carbon) 14%,#fff);transition:color .25s;cursor:pointer;border-radius:4px}
+.pal.rot{font-weight:700}
+.pal.dicha{color:var(--carbon)}
+.pal.rot.dicha{color:var(--marron)}
+.pal.actual{color:var(--marron);background:color-mix(in srgb,var(--amarillo) 80%,#fff);box-shadow:0 0 0 2px color-mix(in srgb,var(--amarillo) 80%,#fff)}
+.pal:hover{text-decoration:underline;text-decoration-color:var(--naranja)}
+.nav{display:flex;align-items:center;justify-content:center;gap:12px;padding-top:4px;font:600 11px/1 Montserrat,Arial,sans-serif;color:var(--gris)}
+.nav button{display:grid;place-items:center;width:28px;height:28px;border:1.5px solid var(--marron);border-radius:50%;background:#fff;color:var(--marron);cursor:pointer}
+.nav button:disabled{opacity:.3;cursor:default}
+.sigue{position:absolute;left:10px;right:10px;bottom:8px;display:none;gap:9px;align-items:center;padding:9px 11px;border-radius:12px;
+  background:color-mix(in srgb,var(--amarillo) 60%,#fff);border-left:5px solid var(--naranja);font:600 12.5px/1.35 Montserrat,Arial,sans-serif;color:var(--marron);
+  box-shadow:0 6px 16px color-mix(in srgb,var(--carbon) 18%,transparent)}
+.sigue.ver{display:flex}
+.sigue button{margin-left:auto;flex:none;padding:6px 11px;border:0;border-radius:99px;background:var(--naranja);color:#fff;font:700 11.5px/1 Montserrat,Arial,sans-serif;cursor:pointer}
+
+/* Reproductor */
+.reproductor{display:flex;align-items:center;gap:11px;padding:7px 10px;border-radius:14px;background:var(--marron);color:#fff}
+.play{flex:none;display:grid;place-items:center;width:42px;height:42px;border:0;border-radius:50%;background:var(--naranja);color:#fff;font-size:16px;cursor:pointer}
+.play.latido{animation:latido 1.6s ease-in-out infinite}
+@keyframes latido{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--naranja) 60%,transparent)}50%{box-shadow:0 0 0 9px transparent}}
+.ondas{flex:none;display:flex;align-items:center;gap:3px;height:24px}
+.ondas i{display:block;width:3px;height:5px;border-radius:2px;background:var(--amarillo);opacity:.55}
+.sonando .ondas i{opacity:1;animation:onda .9s ease-in-out infinite}
+.sonando .ondas i:nth-child(2){animation-delay:.15s}.sonando .ondas i:nth-child(3){animation-delay:.3s}
+.sonando .ondas i:nth-child(4){animation-delay:.45s}.sonando .ondas i:nth-child(5){animation-delay:.6s}
+@keyframes onda{0%,100%{height:5px}50%{height:22px}}
+.barra{position:relative;flex:1;height:8px;border-radius:99px;background:color-mix(in srgb,#fff 22%,var(--marron));cursor:pointer}
+.barra i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:99px;background:var(--amarillo)}
+.barra input{position:absolute;inset:-8px 0;width:100%;opacity:0;cursor:pointer;margin:0}
+.tiempo{flex:none;min-width:80px;font:600 12px/1 Montserrat,Arial,sans-serif;text-align:right;font-variant-numeric:tabular-nums}
+.vel{flex:none;padding:5px 9px;border:1.5px solid color-mix(in srgb,#fff 45%,var(--marron));border-radius:99px;background:transparent;color:#fff;font:700 11.5px/1 Montserrat,Arial,sans-serif;cursor:pointer}
+.voz{flex:none;display:flex;align-items:center;gap:6px;font:500 11px/1.2 Roboto,Arial,sans-serif;color:color-mix(in srgb,#fff 80%,var(--marron))}
+.pc{flex:none;display:grid;place-items:center;width:32px;height:32px;border:1.5px solid color-mix(in srgb,#fff 45%,var(--marron));border-radius:50%;background:transparent;color:#fff;cursor:pointer}
+
+/* Video del caso */
+.ventana{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:14px;background:color-mix(in srgb,var(--marron) 70%,transparent)}
+.ventana[hidden]{display:none}
+.ventana-caja{position:relative;display:flex;flex-direction:column;width:100%;height:100%;max-width:1100px;border-radius:16px;overflow:hidden;background:#fff}
+.ventana iframe{flex:1;width:100%;border:0}
+.cerrar{align-self:flex-end;margin:8px;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:0;border-radius:99px;background:var(--naranja);color:#fff;
+  font:700 12px/1 Montserrat,Arial,sans-serif;cursor:pointer}
+
+@media (prefers-reduced-motion:reduce){.sonando .ondas i,.play.latido,.capa-esc.ver .actor,.sonando .capa-esc.foto.ver img,.dato.entra,.sonando .vivo{animation:none}}
+/* Pantalla angosta (celular de pie): la escena arriba, breve; la transcripción debajo. */
+@container caso (max-width:560px){
+  .titulo{font-size:14px}.cab-ico{width:32px;height:32px;font-size:14px}.ver-video span,.paso small,.voz{display:none}
+  .cuerpo{grid-template-columns:1fr;grid-template-rows:150px 1fr}
+  .escena{flex-direction:row}.lienzo-esc{flex:0 0 42%}.datos{flex:1;justify-content:center;padding:6px}
+  .dato:nth-child(n+3){display:none}
+  .reproductor{flex-wrap:wrap;gap:8px}.barra{order:5;flex-basis:100%}.tiempo{min-width:0;margin-left:auto}
+}

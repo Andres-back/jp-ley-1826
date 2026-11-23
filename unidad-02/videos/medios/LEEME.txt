@@ -1,0 +1,13 @@
+Medios de los casos en video · Unidad 2
+
+Aquí van los archivos definitivos que entregue JP o la rama audiovisual, con estos nombres exactos (rutas relativas,
+portables dentro del paquete de Genially y del SCORM):
+- ley-u2-caso-1 (Lección 6, después de la escena 14 (página especial «Caso en video»); sin ubicación en la ficha: propuesta, pendiente de confirmación de JP): medios/ley-u2-caso-1.mp4, medios/ley-u2-caso-1.es.vtt, medios/ley-u2-caso-1-lsc.mp4, medios/ley-u2-caso-1-lsc.es.vtt
+- ley-u2-caso-2 (Lección 6, después de la escena 14 (página especial «Caso en video»); sin ubicación en la ficha: propuesta, pendiente de confirmación de JP): medios/ley-u2-caso-2.mp4, medios/ley-u2-caso-2.es.vtt, medios/ley-u2-caso-2-lsc.mp4, medios/ley-u2-caso-2-lsc.es.vtt
+- ley-u2-cierre («¡Felicitaciones!» de la unidad 2 en el aula (3.2.9 de la ficha)): medios/ley-u2-cierre.mp4, medios/ley-u2-cierre.es.vtt, medios/ley-u2-cierre-lsc.mp4, medios/ley-u2-cierre-lsc.es.vtt
+- ley-u2-presentacion (Presentación de la unidad 2 (3.2.1 de la ficha)): medios/ley-u2-presentacion.mp4, medios/ley-u2-presentacion.es.vtt, medios/ley-u2-presentacion-lsc.mp4, medios/ley-u2-presentacion-lsc.es.vtt
+
+Formato previsto: video MP4 (H.264 + AAC) y subtítulos WebVTT en español (.vtt, UTF-8).
+El reproductor los toma en cuanto están aquí; mientras falten, dice «Video en producción». Los copia
+herramientas/integrar_entregas.py (solo lo aprobado). Después: cambiar el estado del caso a «entregado», volver a
+generar el reproductor y probar ambas versiones con subtítulos en el iframe y en el paquete antes de declararlos integrados.

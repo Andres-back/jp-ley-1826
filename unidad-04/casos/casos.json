@@ -1,0 +1,1923 @@
+{
+ "ley-u4-caso-1": {
+  "titulo": "Caso de análisis 1",
+  "eyebrow": "Unidad 4 · Caso con audio",
+  "tramos": [
+   {
+    "clave": "A",
+    "rotulo": "Planteamiento del caso",
+    "sub": "",
+    "voz": "Voz de mujer",
+    "archivo": "medios/ley-u4-caso-1-a.mp3",
+    "duracion": 51.64,
+    "parrafos": [
+     {
+      "meta": false,
+      "frases": [
+       {
+        "t": "Un fiscal local de Bogotá recibe una noticia criminal por un delito de inasistencia alimentaria (art. 233 del CP), cometido presuntamente por un ciudadano de 35 años de edad contra su hijo menor de edad.",
+        "ini": 1.46,
+        "w": [
+         [
+          "Un",
+          1.46
+         ],
+         [
+          "fiscal",
+          1.82
+         ],
+         [
+          "local",
+          2.16
+         ],
+         [
+          "de",
+          2.5
+         ],
+         [
+          "Bogotá",
+          2.76
+         ],
+         [
+          "recibe",
+          3.26
+         ],
+         [
+          "una",
+          3.66
+         ],
+         [
+          "noticia",
+          3.86
+         ],
+         [
+          "criminal",
+          4.36
+         ],
+         [
+          "por",
+          4.7
+         ],
+         [
+          "un",
+          5.16
+         ],
+         [
+          "delito",
+          5.3
+         ],
+         [
+          "de",
+          5.78
+         ],
+         [
+          "inasistencia",
+          5.9
+         ],
+         [
+          "alimentaria",
+          6.72
+         ],
+         [
+          "(art.",
+          7.48
+         ],
+         [
+          "233",
+          8.24
+         ],
+         [
+          "del",
+          9.54
+         ],
+         [
+          "CP),",
+          10.2
+         ],
+         [
+          "cometido",
+          10.78
+         ],
+         [
+          "presuntamente",
+          11.38
+         ],
+         [
+          "por",
+          12.16
+         ],
+         [
+          "un",
+          12.42
+         ],
+         [
+          "ciudadano",
+          12.58
+         ],
+         [
+          "de",
+          13.32
+         ],
+         [
+          "35",
+          13.46
+         ],
+         [
+          "años",
+          13.84
+         ],
+         [
+          "de",
+          14.54
+         ],
+         [
+          "edad",
+          14.8
+         ],
+         [
+          "contra",
+          15.1
+         ],
+         [
+          "su",
+          15.44
+         ],
+         [
+          "hijo",
+          15.72
+         ],
+         [
+          "menor",
+          16.0
+         ],
+         [
+          "de",
+          16.28
+         ],
+         [
+          "edad.",
+          16.56
+         ]
+        ],
+        "datos": [
+         {
+          "tipo": "lugar",
+          "ico": "fa-location-dot",
+          "t": "Bogotá",
+          "s": 2.5
+         },
+         {
+          "tipo": "delito",
+          "ico": "fa-file-lines",
+          "t": "inasistencia alimentaria",
+          "s": 5.9
+         },
+         {
+          "tipo": "norma",
+          "ico": "fa-book",
+          "t": "art. 233 del CP",
+          "s": 7.48
+         },
+         {
+          "tipo": "cantidad",
+          "ico": "fa-hashtag",
+          "t": "35 años",
+          "s": 13.46
+         }
+        ],
+        "e": {
+         "p": [
+          [
+           "fiscal",
+           "recibe",
+           "documento"
+          ],
+          [
+           "ciudadano",
+           "pie",
+           null
+          ],
+          [
+           "hijo",
+           "pie",
+           null
+          ]
+         ],
+         "i": [],
+         "o": [
+          {
+           "t": "reloj"
+          }
+         ]
+        }
+       },
+       {
+        "t": "El fiscal decide, con el fin de agilizar el proceso preprocesal y resolver el conflicto de forma expedita, fijar fecha para diligencia de conciliación utilizando el formato FGN-MP02-F-10.",
+        "ini": 16.98,
+        "w": [
+         [
+          "El",
+          16.98
+         ],
+         [
+          "fiscal",
+          17.14
+         ],
+         [
+          "decide,",
+          17.54
+         ],
+         [
+          "con",
+          18.34
+         ],
+         [
+          "el",
+          18.62
+         ],
+         [
+          "fin",
+          18.76
+         ],
+         [
+          "de",
+          18.96
+         ],
+         [
+          "agilizar",
+          19.06
+         ],
+         [
+          "el",
+          19.58
+         ],
+         [
+          "proceso",
+          19.76
+         ],
+         [
+          "preprocesal",
+          20.12
+         ],
+         [
+          "y",
+          21.28
+         ],
+         [
+          "resolver",
+          21.5
+         ],
+         [
+          "el",
+          21.86
+         ],
+         [
+          "conflicto",
+          22.22
+         ],
+         [
+          "de",
+          22.86
+         ],
+         [
+          "forma",
+          22.9
+         ],
+         [
+          "expedita,",
+          23.24
+         ],
+         [
+          "fijar",
+          24.06
+         ],
+         [
+          "fecha",
+          24.56
+         ],
+         [
+          "para",
+          24.9
+         ],
+         [
+          "diligencia",
+          25.1
+         ],
+         [
+          "de",
+          25.84
+         ],
+         [
+          "conciliación",
+          25.92
+         ],
+         [
+          "utilizando",
+          26.78
+         ],
+         [
+          "el",
+          27.68
+         ],
+         [
+          "formato",
+          27.8
+         ],
+         [
+          "FGN-MP02-F-10.",
+          30.6
+         ]
+        ],
+        "datos": [
+         {
+          "tipo": "norma",
+          "ico": "fa-book",
+          "t": "FGN-MP02-F-10",
+          "s": 30.6
+         }
+        ],
+        "e": {
+         "p": [
+          [
+           "fiscal",
+           "explica",
+           "carpeta"
+          ]
+         ],
+         "i": [],
+         "o": [
+          {
+           "t": "hoja"
+          }
+         ]
+        }
+       },
+       {
+        "t": "Sin embargo, la defensa del indiciado presenta una solicitud de recusación contra el fiscal y posterior solicitud de nulidad en la audiencia concentrada con el argumento de que que la inasistencia alimentaria no es un delito querellable y que exigir conciliación obligatoria vulnera el debido proceso.",
+        "ini": 33.4,
+        "w": [
+         [
+          "Sin",
+          33.4
+         ],
+         [
+          "embargo,",
+          33.74
+         ],
+         [
+          "la",
+          34.4
+         ],
+         [
+          "defensa",
+          34.6
+         ],
+         [
+          "del",
+          35.12
+         ],
+         [
+          "indiciado",
+          35.24
+         ],
+         [
+          "presenta",
+          35.8
+         ],
+         [
+          "una",
+          36.48
+         ],
+         [
+          "solicitud",
+          36.58
+         ],
+         [
+          "de",
+          37.24
+         ],
+         [
+          "recusación",
+          37.42
+         ],
+         [
+          "contra",
+          38.0
+         ],
+         [
+          "el",
+          38.42
+         ],
+         [
+          "fiscal",
+          38.6
+         ],
+         [
+          "y",
+          38.9
+         ],
+         [
+          "posterior",
+          39.26
+         ],
+         [
+          "solicitud",
+          39.68
+         ],
+         [
+          "de",
+          40.5
+         ],
+         [
+          "nulidad",
+          40.68
+         ],
+         [
+          "en",
+          41.04
+         ],
+         [
+          "la",
+          41.4
+         ],
+         [
+          "audiencia",
+          41.48
+         ],
+         [
+          "concentrada",
+          41.9
+         ],
+         [
+          "con",
+          42.86
+         ],
+         [
+          "el",
+          43.1
+         ],
+         [
+          "argumento",
+          43.28
+         ],
+         [
+          "de",
+          43.92
+         ],
+         [
+          "que",
+          43.94
+         ],
+         [
+          "que",
+          44.02
+         ],
+         [
+          "la",
+          44.1
+         ],
+         [
+          "inasistencia",
+          44.28
+         ],
+         [
+          "alimentaria",
+          45.12
+         ],
+         [
+          "no",
+          45.76
+         ],
+         [
+          "es",
+          45.92
+         ],
+         [
+          "un",
+          46.04
+         ],
+         [
+          "delito",
+          46.2
+         ],
+         [
+          "querellable",
+          46.62
+         ],
+         [
+          "y",
+          47.22
+         ],
+         [
+          "que",
+          47.58
+         ],
+         [
+          "exigir",
+          47.72
+         ],
+         [
+          "conciliación",
+          48.22
+         ],
+         [
+          "obligatoria",
+          48.88
+         ],
+         [
+          "vulnera",
+          49.72
+         ],
+         [
+          "el",
+          50.26
+         ],
+         [
+          "debido",
+          50.3
+         ],
+         [
+          "proceso.",
+          50.54
+         ]
+        ],
+        "datos": [],
+        "e": {
+         "p": [
+          [
+           "defensa",
+           "entrega",
+           "documento"
+          ],
+          [
+           "ciudadano",
+           "entrega",
+           "documento"
+          ],
+          [
+           "fiscal",
+           "explica",
+           "carpeta"
+          ]
+         ],
+         "i": [],
+         "o": [
+          {
+           "t": "estrado"
+          },
+          {
+           "t": "hoja"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "reparto": {
+   "fiscal": {
+    "etiqueta": "Fiscal local",
+    "rol": "fiscal",
+    "genero": "m",
+    "figura": "figuras/carpeta-hombre.webp",
+    "aspecto": 0.705,
+    "mira": 1
+   },
+   "ciudadano": {
+    "etiqueta": "Indiciado",
+    "rol": "indiciado",
+    "genero": "m",
+    "figura": "figuras/trio-dialogo--2.webp",
+    "aspecto": 0.605,
+    "mira": -1
+   },
+   "hijo": {
+    "etiqueta": "Hijo menor de edad",
+    "rol": "nino",
+    "genero": "m"
+   },
+   "defensa": {
+    "etiqueta": "Defensa",
+    "rol": "defensa",
+    "genero": "n"
+   }
+  },
+  "instituciones": {
+   "fiscalia": {
+    "etiqueta": "Fiscalía",
+    "tipo": "edificio"
+   },
+   "corte": {
+    "etiqueta": "Corte Suprema",
+    "tipo": "corte"
+   },
+   "medicina": {
+    "etiqueta": "Medicina Legal",
+    "tipo": "edificio"
+   },
+   "consejo": {
+    "etiqueta": "Consejo Seccional",
+    "tipo": "corte"
+   }
+  },
+  "video": "../videos/index.html?video=ley-u4-caso-1"
+ },
+ "ley-u4-caso-2": {
+  "titulo": "Caso de análisis 2",
+  "eyebrow": "Unidad 4 · Caso con audio",
+  "tramos": [
+   {
+    "clave": "A",
+    "rotulo": "Planteamiento del caso",
+    "sub": "",
+    "voz": "Voz de mujer",
+    "archivo": "medios/ley-u4-caso-2-a.mp3",
+    "duracion": 69.24,
+    "parrafos": [
+     {
+      "meta": false,
+      "frases": [
+       {
+        "t": "En el curso de un proceso por lesiones personales culposas en accidente de tránsito, las partes comparecen voluntariamente y solicitan de común acuerdo la aplicación del trámite de mediación penal.",
+        "ini": 1.48,
+        "w": [
+         [
+          "En",
+          1.48
+         ],
+         [
+          "el",
+          1.88
+         ],
+         [
+          "curso",
+          2.0
+         ],
+         [
+          "de",
+          2.24
+         ],
+         [
+          "un",
+          2.42
+         ],
+         [
+          "proceso",
+          2.54
+         ],
+         [
+          "por",
+          2.86
+         ],
+         [
+          "lesiones",
+          3.16
+         ],
+         [
+          "personales",
+          3.66
+         ],
+         [
+          "culposas",
+          4.44
+         ],
+         [
+          "en",
+          5.06
+         ],
+         [
+          "accidente",
+          5.22
+         ],
+         [
+          "de",
+          5.84
+         ],
+         [
+          "tránsito,",
+          5.94
+         ],
+         [
+          "las",
+          6.64
+         ],
+         [
+          "partes",
+          7.0
+         ],
+         [
+          "comparecen",
+          7.38
+         ],
+         [
+          "voluntariamente",
+          8.08
+         ],
+         [
+          "y",
+          8.74
+         ],
+         [
+          "solicitan",
+          9.42
+         ],
+         [
+          "de",
+          10.14
+         ],
+         [
+          "común",
+          10.24
+         ],
+         [
+          "acuerdo",
+          10.5
+         ],
+         [
+          "la",
+          10.86
+         ],
+         [
+          "aplicación",
+          11.24
+         ],
+         [
+          "del",
+          11.8
+         ],
+         [
+          "trámite",
+          12.04
+         ],
+         [
+          "de",
+          12.54
+         ],
+         [
+          "mediación",
+          12.66
+         ],
+         [
+          "penal.",
+          13.18
+         ]
+        ],
+        "datos": [],
+        "e": {
+         "p": [
+          [
+           "mediador",
+           "pie",
+           "carpeta"
+          ],
+          [
+           "partes",
+           "pie",
+           null
+          ]
+         ],
+         "i": [],
+         "o": []
+        }
+       },
+       {
+        "t": "El fiscal de conocimiento realiza el correspondiente trámite remitiendo el conflicto a un mediador del distrito judicial mediante el formato FGN-MP02-F-132.",
+        "ini": 13.78,
+        "w": [
+         [
+          "El",
+          13.78
+         ],
+         [
+          "fiscal",
+          14.08
+         ],
+         [
+          "de",
+          14.48
+         ],
+         [
+          "conocimiento",
+          14.74
+         ],
+         [
+          "realiza",
+          15.38
+         ],
+         [
+          "el",
+          16.04
+         ],
+         [
+          "correspondiente",
+          16.16
+         ],
+         [
+          "trámite",
+          16.94
+         ],
+         [
+          "remitiendo",
+          17.44
+         ],
+         [
+          "el",
+          18.2
+         ],
+         [
+          "conflicto",
+          18.38
+         ],
+         [
+          "a",
+          19.06
+         ],
+         [
+          "un",
+          19.22
+         ],
+         [
+          "mediador",
+          19.42
+         ],
+         [
+          "del",
+          19.94
+         ],
+         [
+          "distrito",
+          20.3
+         ],
+         [
+          "judicial",
+          20.78
+         ],
+         [
+          "mediante",
+          21.36
+         ],
+         [
+          "el",
+          22.12
+         ],
+         [
+          "formato",
+          22.34
+         ],
+         [
+          "FGN-MP02-F-132.",
+          25.35
+         ]
+        ],
+        "datos": [
+         {
+          "tipo": "norma",
+          "ico": "fa-book",
+          "t": "FGN-MP02-F-132",
+          "s": 25.35
+         }
+        ],
+        "e": {
+         "p": [
+          [
+           "fiscal",
+           "entrega",
+           "documento"
+          ],
+          [
+           "mediador",
+           "pie",
+           "carpeta"
+          ]
+         ],
+         "i": [],
+         "o": [
+          {
+           "t": "hoja"
+          }
+         ]
+        }
+       },
+       {
+        "t": "Durante la sesión de mediación, el indiciado acepta expresamente que conducía con exceso de velocidad, manifiesta un profundo arrepentimiento y se ofrece a pagar la suma de diez millones de pesos como indemnización total.",
+        "ini": 28.36,
+        "w": [
+         [
+          "Durante",
+          28.36
+         ],
+         [
+          "la",
+          28.9
+         ],
+         [
+          "sesión",
+          29.02
+         ],
+         [
+          "de",
+          29.46
+         ],
+         [
+          "mediación,",
+          29.58
+         ],
+         [
+          "el",
+          30.32
+         ],
+         [
+          "indiciado",
+          30.54
+         ],
+         [
+          "acepta",
+          31.1
+         ],
+         [
+          "expresamente",
+          31.74
+         ],
+         [
+          "que",
+          32.36
+         ],
+         [
+          "conducía",
+          32.72
+         ],
+         [
+          "con",
+          33.34
+         ],
+         [
+          "exceso",
+          33.56
+         ],
+         [
+          "de",
+          34.14
+         ],
+         [
+          "velocidad,",
+          34.16
+         ],
+         [
+          "manifiesta",
+          35.0
+         ],
+         [
+          "un",
+          35.76
+         ],
+         [
+          "profundo",
+          35.9
+         ],
+         [
+          "arrepentimiento",
+          36.4
+         ],
+         [
+          "y",
+          37.24
+         ],
+         [
+          "se",
+          37.58
+         ],
+         [
+          "ofrece",
+          37.7
+         ],
+         [
+          "a",
+          38.12
+         ],
+         [
+          "pagar",
+          38.24
+         ],
+         [
+          "la",
+          38.42
+         ],
+         [
+          "suma",
+          38.7
+         ],
+         [
+          "de",
+          39.06
+         ],
+         [
+          "diez",
+          39.25
+         ],
+         [
+          "millones",
+          39.44
+         ],
+         [
+          "de",
+          39.7
+         ],
+         [
+          "pesos",
+          40.06
+         ],
+         [
+          "como",
+          40.36
+         ],
+         [
+          "indemnización",
+          40.78
+         ],
+         [
+          "total.",
+          41.5
+         ]
+        ],
+        "datos": [],
+        "e": {
+         "p": [
+          [
+           "mediador",
+           "explica",
+           "carpeta"
+          ],
+          [
+           "indiciado",
+           "explica",
+           null
+          ]
+         ],
+         "i": [],
+         "o": [
+          {
+           "t": "billete"
+          }
+         ]
+        }
+       },
+       {
+        "t": "Tras varias sesiones, no se llega a un acuerdo y se suscribe el formato FGN-MP02-F-133, certificando que no hubo acuerdo.",
+        "ini": 42.3,
+        "w": [
+         [
+          "Tras",
+          42.3
+         ],
+         [
+          "varias",
+          42.66
+         ],
+         [
+          "sesiones,",
+          42.92
+         ],
+         [
+          "no",
+          43.7
+         ],
+         [
+          "se",
+          43.98
+         ],
+         [
+          "llega",
+          44.14
+         ],
+         [
+          "a",
+          44.38
+         ],
+         [
+          "un",
+          44.5
+         ],
+         [
+          "acuerdo",
+          44.62
+         ],
+         [
+          "y",
+          45.0
+         ],
+         [
+          "se",
+          45.34
+         ],
+         [
+          "suscribe",
+          45.48
+         ],
+         [
+          "el",
+          46.06
+         ],
+         [
+          "formato",
+          46.16
+         ],
+         [
+          "FGN-MP02-F-133,",
+          48.92
+         ],
+         [
+          "certificando",
+          51.68
+         ],
+         [
+          "que",
+          52.78
+         ],
+         [
+          "no",
+          52.98
+         ],
+         [
+          "hubo",
+          53.16
+         ],
+         [
+          "acuerdo.",
+          53.44
+         ]
+        ],
+        "datos": [
+         {
+          "tipo": "norma",
+          "ico": "fa-book",
+          "t": "FGN-MP02-F-133",
+          "s": 48.92
+         }
+        ],
+        "e": {
+         "p": [],
+         "i": [],
+         "o": [
+          {
+           "t": "hoja"
+          }
+         ]
+        }
+       },
+       {
+        "t": "Durante el juicio oral, el fiscal pretende introducir el audio de la sesión de mediación para demostrar que el acusado admitió el exceso de velocidad y la autoría de la agresión.",
+        "ini": 54.02,
+        "w": [
+         [
+          "Durante",
+          54.02
+         ],
+         [
+          "el",
+          54.62
+         ],
+         [
+          "juicio",
+          54.72
+         ],
+         [
+          "oral,",
+          55.02
+         ],
+         [
+          "el",
+          55.42
+         ],
+         [
+          "fiscal",
+          55.58
+         ],
+         [
+          "pretende",
+          55.84
+         ],
+         [
+          "introducir",
+          56.6
+         ],
+         [
+          "el",
+          57.18
+         ],
+         [
+          "audio",
+          57.44
+         ],
+         [
+          "de",
+          57.76
+         ],
+         [
+          "la",
+          58.02
+         ],
+         [
+          "sesión",
+          58.08
+         ],
+         [
+          "de",
+          58.58
+         ],
+         [
+          "mediación",
+          58.66
+         ],
+         [
+          "para",
+          59.14
+         ],
+         [
+          "demostrar",
+          59.66
+         ],
+         [
+          "que",
+          60.32
+         ],
+         [
+          "el",
+          60.5
+         ],
+         [
+          "acusado",
+          60.56
+         ],
+         [
+          "admitió",
+          61.08
+         ],
+         [
+          "el",
+          61.68
+         ],
+         [
+          "exceso",
+          61.78
+         ],
+         [
+          "de",
+          62.38
+         ],
+         [
+          "velocidad",
+          62.38
+         ],
+         [
+          "y",
+          62.78
+         ],
+         [
+          "la",
+          63.3
+         ],
+         [
+          "autoría",
+          63.42
+         ],
+         [
+          "de",
+          63.94
+         ],
+         [
+          "la",
+          64.02
+         ],
+         [
+          "agresión.",
+          64.12
+         ]
+        ],
+        "datos": [],
+        "e": {
+         "p": [
+          [
+           "fiscal",
+           "explica",
+           "carpeta"
+          ],
+          [
+           "indiciado",
+           "pie",
+           null
+          ]
+         ],
+         "i": [],
+         "o": [
+          {
+           "t": "estrado"
+          },
+          {
+           "t": "celular"
+          }
+         ]
+        }
+       },
+       {
+        "t": "El defensor formula oposición solicitando la regla de exclusión.",
+        "ini": 64.82,
+        "w": [
+         [
+          "El",
+          64.82
+         ],
+         [
+          "defensor",
+          65.08
+         ],
+         [
+          "formula",
+          65.58
+         ],
+         [
+          "oposición",
+          65.98
+         ],
+         [
+          "solicitando",
+          66.68
+         ],
+         [
+          "la",
+          67.46
+         ],
+         [
+          "regla",
+          67.62
+         ],
+         [
+          "de",
+          68.04
+         ],
+         [
+          "exclusión.",
+          68.1
+         ]
+        ],
+        "datos": [],
+        "e": {
+         "p": [
+          [
+           "defensor",
+           "explica",
+           "maletin"
+          ]
+         ],
+         "i": [],
+         "o": []
+        }
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "reparto": {
+   "fiscal": {
+    "etiqueta": "Fiscal",
+    "rol": "fiscal",
+    "genero": "m",
+    "figura": "figuras/carpeta-hombre.webp",
+    "aspecto": 0.705,
+    "mira": 1
+   },
+   "mediador": {
+    "etiqueta": "Mediador",
+    "rol": "mediador",
+    "genero": "m",
+    "figura": "figuras/portatil-hombre.webp",
+    "aspecto": 0.743,
+    "mira": 1
+   },
+   "indiciado": {
+    "etiqueta": "Indiciado",
+    "rol": "indiciado",
+    "genero": "m",
+    "figura": "figuras/trio-dialogo--2.webp",
+    "aspecto": 0.605,
+    "mira": -1
+   },
+   "defensor": {
+    "etiqueta": "Defensor",
+    "rol": "defensa",
+    "genero": "m",
+    "figura": "figuras/camina-maletin.webp",
+    "aspecto": 0.976,
+    "mira": 1
+   },
+   "partes": {
+    "etiqueta": "Las partes",
+    "rol": "grupo",
+    "genero": "n",
+    "figura": "figuras/revisa-expediente.webp",
+    "aspecto": 0.988,
+    "mira": 0
+   }
+  },
+  "instituciones": {
+   "fiscalia": {
+    "etiqueta": "Fiscalía",
+    "tipo": "edificio"
+   },
+   "corte": {
+    "etiqueta": "Corte Suprema",
+    "tipo": "corte"
+   },
+   "medicina": {
+    "etiqueta": "Medicina Legal",
+    "tipo": "edificio"
+   },
+   "consejo": {
+    "etiqueta": "Consejo Seccional",
+    "tipo": "corte"
+   }
+  },
+  "video": "../videos/index.html?video=ley-u4-caso-2"
+ },
+ "ley-u4-caso-3": {
+  "titulo": "Caso de análisis 3",
+  "eyebrow": "Unidad 4 · Caso con audio",
+  "tramos": [
+   {
+    "clave": "A",
+    "rotulo": "Planteamiento del caso",
+    "sub": "",
+    "voz": "Voz de mujer",
+    "archivo": "medios/ley-u4-caso-3-a.mp3",
+    "duracion": 38.17,
+    "parrafos": [
+     {
+      "meta": false,
+      "frases": [
+       {
+        "t": "Una ciudadana de 28 años presenta denuncia por el delito de VIF sistemática en concurso con lesiones personales dolosas simples contra su cónyuge.",
+        "ini": 1.48,
+        "w": [
+         [
+          "Una",
+          1.48
+         ],
+         [
+          "ciudadana",
+          1.88
+         ],
+         [
+          "de",
+          2.62
+         ],
+         [
+          "28",
+          2.78
+         ],
+         [
+          "años",
+          3.18
+         ],
+         [
+          "presenta",
+          3.82
+         ],
+         [
+          "denuncia",
+          4.5
+         ],
+         [
+          "por",
+          5.02
+         ],
+         [
+          "el",
+          5.2
+         ],
+         [
+          "delito",
+          5.36
+         ],
+         [
+          "de",
+          5.9
+         ],
+         [
+          "VIF",
+          6.04
+         ],
+         [
+          "sistemática",
+          7.22
+         ],
+         [
+          "en",
+          8.24
+         ],
+         [
+          "concurso",
+          8.76
+         ],
+         [
+          "con",
+          9.36
+         ],
+         [
+          "lesiones",
+          9.54
+         ],
+         [
+          "personales",
+          10.02
+         ],
+         [
+          "dolosas",
+          10.8
+         ],
+         [
+          "simples",
+          11.28
+         ],
+         [
+          "contra",
+          11.62
+         ],
+         [
+          "su",
+          12.32
+         ],
+         [
+          "cónyuge.",
+          12.68
+         ]
+        ],
+        "datos": [
+         {
+          "tipo": "cantidad",
+          "ico": "fa-hashtag",
+          "t": "28 años",
+          "s": 2.78
+         }
+        ],
+        "e": {
+         "p": [
+          [
+           "ciudadana",
+           "entrega",
+           "documento"
+          ],
+          [
+           "esposo",
+           "pie",
+           null
+          ]
+         ],
+         "i": [],
+         "o": [
+          {
+           "t": "reloj"
+          },
+          {
+           "t": "hoja"
+          }
+         ]
+        }
+       },
+       {
+        "t": "La víctima asiste al despacho del fiscal en compañía de un abogado del consultorio jurídico de una universidad manifestando que voluntariamente desea desistir de la denuncia, además solicita formalizar un acuerdo de mediación y posterior archivo de la carpeta penal, alegando que su esposo ya se disculpó y prometió asistir a terapia de pareja y que ella depende económicamente de él.",
+        "ini": 13.42,
+        "w": [
+         [
+          "La",
+          13.42
+         ],
+         [
+          "víctima",
+          13.74
+         ],
+         [
+          "asiste",
+          14.2
+         ],
+         [
+          "al",
+          14.66
+         ],
+         [
+          "despacho",
+          14.76
+         ],
+         [
+          "del",
+          15.24
+         ],
+         [
+          "fiscal",
+          15.4
+         ],
+         [
+          "en",
+          15.74
+         ],
+         [
+          "compañía",
+          16.0
+         ],
+         [
+          "de",
+          16.54
+         ],
+         [
+          "un",
+          16.72
+         ],
+         [
+          "abogado",
+          16.84
+         ],
+         [
+          "del",
+          17.42
+         ],
+         [
+          "consultorio",
+          17.56
+         ],
+         [
+          "jurídico",
+          18.28
+         ],
+         [
+          "de",
+          18.82
+         ],
+         [
+          "una",
+          19.02
+         ],
+         [
+          "universidad",
+          19.24
+         ],
+         [
+          "manifestando",
+          20.24
+         ],
+         [
+          "que",
+          21.06
+         ],
+         [
+          "voluntariamente",
+          21.28
+         ],
+         [
+          "desea",
+          21.9
+         ],
+         [
+          "desistir",
+          22.8
+         ],
+         [
+          "de",
+          23.44
+         ],
+         [
+          "la",
+          23.5
+         ],
+         [
+          "denuncia,",
+          23.62
+         ],
+         [
+          "además",
+          24.42
+         ],
+         [
+          "solicita",
+          25.28
+         ],
+         [
+          "formalizar",
+          26.08
+         ],
+         [
+          "un",
+          26.74
+         ],
+         [
+          "acuerdo",
+          27.0
+         ],
+         [
+          "de",
+          27.34
+         ],
+         [
+          "mediación",
+          27.64
+         ],
+         [
+          "y",
+          28.22
+         ],
+         [
+          "posterior",
+          28.5
+         ],
+         [
+          "archivo",
+          28.86
+         ],
+         [
+          "de",
+          29.56
+         ],
+         [
+          "la",
+          29.68
+         ],
+         [
+          "carpeta",
+          29.76
+         ],
+         [
+          "penal,",
+          30.36
+         ],
+         [
+          "alegando",
+          30.84
+         ],
+         [
+          "que",
+          31.5
+         ],
+         [
+          "su",
+          31.7
+         ],
+         [
+          "esposo",
+          31.8
+         ],
+         [
+          "ya",
+          32.22
+         ],
+         [
+          "se",
+          32.4
+         ],
+         [
+          "disculpó",
+          32.5
+         ],
+         [
+          "y",
+          33.1
+         ],
+         [
+          "prometió",
+          33.22
+         ],
+         [
+          "asistir",
+          33.72
+         ],
+         [
+          "a",
+          34.18
+         ],
+         [
+          "terapia",
+          34.28
+         ],
+         [
+          "de",
+          34.72
+         ],
+         [
+          "pareja",
+          34.8
+         ],
+         [
+          "y",
+          35.34
+         ],
+         [
+          "que",
+          35.58
+         ],
+         [
+          "ella",
+          35.74
+         ],
+         [
+          "depende",
+          36.0
+         ],
+         [
+          "económicamente",
+          36.34
+         ],
+         [
+          "de",
+          37.42
+         ],
+         [
+          "él.",
+          37.68
+         ]
+        ],
+        "datos": [],
+        "e": {
+         "p": [
+          [
+           "ciudadana",
+           "pie",
+           null
+          ],
+          [
+           "fiscal",
+           "pie",
+           "carpeta"
+          ],
+          [
+           "abogado",
+           "explica",
+           "maletin"
+          ]
+         ],
+         "i": [],
+         "o": [
+          {
+           "t": "hoja"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "reparto": {
+   "ciudadana": {
+    "etiqueta": "Ciudadana (víctima)",
+    "rol": "victima",
+    "genero": "f",
+    "figura": "figuras/pensativa-carpeta.webp",
+    "aspecto": 0.817,
+    "mira": 1
+   },
+   "esposo": {
+    "etiqueta": "Esposo",
+    "rol": "indiciado",
+    "genero": "m",
+    "figura": "figuras/trio-dialogo--2.webp",
+    "aspecto": 0.605,
+    "mira": -1
+   },
+   "fiscal": {
+    "etiqueta": "Fiscal",
+    "rol": "fiscal",
+    "genero": "m",
+    "figura": "figuras/carpeta-hombre.webp",
+    "aspecto": 0.705,
+    "mira": 1
+   },
+   "abogado": {
+    "etiqueta": "Abogado del consultorio",
+    "rol": "apoderado",
+    "genero": "m",
+    "figura": "figuras/camina-maletin.webp",
+    "aspecto": 0.976,
+    "mira": 1
+   }
+  },
+  "instituciones": {
+   "fiscalia": {
+    "etiqueta": "Fiscalía",
+    "tipo": "edificio"
+   },
+   "corte": {
+    "etiqueta": "Corte Suprema",
+    "tipo": "corte"
+   },
+   "medicina": {
+    "etiqueta": "Medicina Legal",
+    "tipo": "edificio"
+   },
+   "consejo": {
+    "etiqueta": "Consejo Seccional",
+    "tipo": "corte"
+   }
+  },
+  "video": "../videos/index.html?video=ley-u4-caso-3"
+ }
+}

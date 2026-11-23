@@ -1,0 +1,14 @@
+Medios de los casos en video · Unidad 4
+
+Aquí van los archivos definitivos que entregue JP o la rama audiovisual, con estos nombres exactos (rutas relativas,
+portables dentro del paquete de Genially y del SCORM):
+- ley-u4-caso-1 (Lección 5, después de la escena 5 (página especial «Caso en video»); ficha: [Ubicación principal del caso: Lección 3: Conciliación en delitos querellables y la Guía Institucional.]): medios/ley-u4-caso-1.mp4, medios/ley-u4-caso-1.es.vtt, medios/ley-u4-caso-1-lsc.mp4, medios/ley-u4-caso-1-lsc.es.vtt
+- ley-u4-caso-2 (Lección 5, después de la escena 5 (página especial «Caso en video»); ficha: [Ubicación principal del caso: Lección 4: Mediación penal: principios, procedimiento y formatos.]): medios/ley-u4-caso-2.mp4, medios/ley-u4-caso-2.es.vtt, medios/ley-u4-caso-2-lsc.mp4, medios/ley-u4-caso-2-lsc.es.vtt
+- ley-u4-caso-3 (Lección 5, después de la escena 5 (página especial «Caso en video»); ficha: [Ubicación principal del caso: Lección 5: Enfoque de género en justicia restaurativa, Formato FIR y articulación con la Directiva 0001/2021.]): medios/ley-u4-caso-3.mp4, medios/ley-u4-caso-3.es.vtt, medios/ley-u4-caso-3-lsc.mp4, medios/ley-u4-caso-3-lsc.es.vtt
+- ley-u4-cierre («¡Felicitaciones!» de la unidad 4 en el aula (3.4.9 de la ficha)): medios/ley-u4-cierre.mp4, medios/ley-u4-cierre.es.vtt, medios/ley-u4-cierre-lsc.mp4, medios/ley-u4-cierre-lsc.es.vtt
+- ley-u4-presentacion (Presentación de la unidad 4 (3.4.1 de la ficha)): medios/ley-u4-presentacion.mp4, medios/ley-u4-presentacion.es.vtt, medios/ley-u4-presentacion-lsc.mp4, medios/ley-u4-presentacion-lsc.es.vtt
+
+Formato previsto: video MP4 (H.264 + AAC) y subtítulos WebVTT en español (.vtt, UTF-8).
+El reproductor los toma en cuanto están aquí; mientras falten, dice «Video en producción». Los copia
+herramientas/integrar_entregas.py (solo lo aprobado). Después: cambiar el estado del caso a «entregado», volver a
+generar el reproductor y probar ambas versiones con subtítulos en el iframe y en el paquete antes de declararlos integrados.

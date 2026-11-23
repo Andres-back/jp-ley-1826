@@ -1,0 +1,14 @@
+Medios de los casos en video · Unidad 3
+
+Aquí van los archivos definitivos que entregue JP o la rama audiovisual, con estos nombres exactos (rutas relativas,
+portables dentro del paquete de Genially y del SCORM):
+- ley-u3-caso-1 (Lección 5, después de la escena 6 (página especial «Caso en video»); ficha: [Ubicación del caso: Unidad 3, Lección 2. Sirve como ejemplo práctico del requisito de consentimiento unánime ante pluralidad de víctimas y el término de tres días para subsanar la solicitud.]): medios/ley-u3-caso-1.mp4, medios/ley-u3-caso-1.es.vtt, medios/ley-u3-caso-1-lsc.mp4, medios/ley-u3-caso-1-lsc.es.vtt
+- ley-u3-caso-2 (Lección 5, después de la escena 6 (página especial «Caso en video»); ficha: [Ubicación del caso: Unidad 3, Lección 2. Ilustra la prohibición taxativa de convertir la acción penal cuando el indiciado es un sujeto inimputable que requiere medidas de seguridad.]): medios/ley-u3-caso-2.mp4, medios/ley-u3-caso-2.es.vtt, medios/ley-u3-caso-2-lsc.mp4, medios/ley-u3-caso-2-lsc.es.vtt
+- ley-u3-caso-3 (Lección 5, después de la escena 6 (página especial «Caso en video»); ficha: [Ubicación del caso: Unidad 3, Lección 5. Ejemplifica la causal de reversión de la acción penal privada a pública por faltar al principio de lealtad procesal e incurrir en desviación de poder.]): medios/ley-u3-caso-3.mp4, medios/ley-u3-caso-3.es.vtt, medios/ley-u3-caso-3-lsc.mp4, medios/ley-u3-caso-3-lsc.es.vtt
+- ley-u3-cierre («¡Felicitaciones!» de la unidad 3 en el aula (3.3.9 de la ficha)): medios/ley-u3-cierre.mp4, medios/ley-u3-cierre.es.vtt, medios/ley-u3-cierre-lsc.mp4, medios/ley-u3-cierre-lsc.es.vtt
+- ley-u3-presentacion (Presentación de la unidad 3 (3.3.1 de la ficha)): medios/ley-u3-presentacion.mp4, medios/ley-u3-presentacion.es.vtt, medios/ley-u3-presentacion-lsc.mp4, medios/ley-u3-presentacion-lsc.es.vtt
+
+Formato previsto: video MP4 (H.264 + AAC) y subtítulos WebVTT en español (.vtt, UTF-8).
+El reproductor los toma en cuanto están aquí; mientras falten, dice «Video en producción». Los copia
+herramientas/integrar_entregas.py (solo lo aprobado). Después: cambiar el estado del caso a «entregado», volver a
+generar el reproductor y probar ambas versiones con subtítulos en el iframe y en el paquete antes de declararlos integrados.
