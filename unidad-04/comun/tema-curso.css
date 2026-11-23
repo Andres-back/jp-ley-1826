@@ -320,3 +320,44 @@ mark.ref-texto{background:#FBFBC5;box-shadow:inset 0 -2px 0 #8CD147}
 .hotspot .alerta-sello{display:none}
 .hotspot.es-alerta{position:absolute;border-radius:50%}   /* .es-alerta trae position:relative, que lo sacaba de su sitio */
 .rejilla .celda.es-alerta .alerta-sello{top:8px;left:auto;right:42px}
+
+/* «Tal cual como la hoja» (Samir, 23/11/2026). Solo las escenas que llevan esta ilustración de fondo; a 767 px y en celular no cambia nada.
+   U1 L5, diapositiva 3 (hoja de Juan: «Tres GRIDS en el centro con imagen de fondo tipo escenario… POP UP especial para la "Alerta"»):
+   la ilustración de la conciliación llena el fondo y los tres recuadros van en el centro, en fila, con la «Alerta» a su lado. */
+@container ova (min-width:900px){
+  .marco-ancho .escenario.arte-fondo:has(.arte-fondo-fig img[src*="trio-dialogo"]) .arte-fondo-fig{inset:0;width:100%;height:100%;opacity:.34;justify-content:center;align-items:flex-end}
+  .marco-ancho .escenario.arte-fondo:has(.arte-fondo-fig img[src*="trio-dialogo"]) .arte-fondo-fig img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+  .marco-ancho .escenario.arte-fondo:has(.arte-fondo-fig img[src*="trio-dialogo"]) .rejilla.n4{flex:0 0 auto;align-self:center;width:96%;height:64%;margin:auto;
+    grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,.9fr);grid-template-rows:minmax(0,1fr)}
+  .marco-ancho .escenario.arte-fondo:has(.arte-fondo-fig img[src*="trio-dialogo"]) .rejilla.n4 .celda{grid-row:auto;grid-column:auto;background:rgba(255,255,255,.94)}
+  .marco-ancho .escenario.arte-fondo:has(.arte-fondo-fig img[src*="trio-dialogo"]) .rejilla.n4 .celda .celda-rotulo{font-size:15px}
+  .marco-ancho .escenario.arte-fondo:has(.arte-fondo-fig img[src*="trio-dialogo"]) .rejilla.n4 .celda-foto.sin-foto .obj-svg{max-height:84px}
+  .marco-ancho .escenario.arte-fondo:has(.arte-fondo-fig img[src*="trio-dialogo"]) .rejilla.n4 .celda.es-alerta{background:var(--crema)}
+}
+/* U2 L4, diapositiva 6 (hoja: «Mapa conceptual jerárquico con POP UP. Más pequeño (que no cubra toda la diapositiva) y colocar imagen
+   de fondo»): el mapa (sin paisaje; su raíz es la ilustración p-trio-2, que ningún otro mapa usa), más pequeño y centrado, sobre la
+   ilustración de la audiencia al fondo. El motor no pone «arte» en los mapas conceptuales: el fondo va aquí. */
+@container ova (min-width:900px){
+  .marco-ancho .escenario:has(.esquema-raiz.con-arte img[src*="p-trio-2"]){position:relative;isolation:isolate}
+  .marco-ancho .escenario:has(.esquema-raiz.con-arte img[src*="p-trio-2"])::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:url("ilustraciones-ley/sustentacion-audiencia.webp") center bottom/contain no-repeat;opacity:.3}
+  .marco-ancho .escenario:has(.esquema-raiz.con-arte img[src*="p-trio-2"]) .bloque-esquema{flex:0 1 auto;width:74%;height:90%;margin:auto}
+  .marco-ancho .escenario:has(.esquema-raiz.con-arte img[src*="p-trio-2"]) .esquema{height:100%}
+  .marco-ancho .escenario:has(.esquema-raiz.con-arte img[src*="p-trio-2"]) .nodo-esquema{background:rgba(255,255,255,.94)}
+}
+
+/* «Alerta» destacada dentro de los recuadros de una lectura (U2 L3 p. 2, U3 L4 p. 3; 23/11/2026): el sello va dentro del recuadro,
+   arriba a la derecha (con top:-11px se salía y pisaba la fila de arriba), y el recuadro lleva el fondo crema del curso. */
+.cmp-celda.es-alerta .alerta-sello{top:6px;left:auto;right:8px}
+.cmp-celda.es-alerta{background:var(--crema)}
+.cmp-celda.es-alerta .cmp-celda-rot{padding-right:76px}
+/* Lámina volteada con ilustración vertical «p-…» (U3 L3 p. 3, hoja: «Texto alineado a la derecha con persona señalando desde la
+   izquierda»): la regla de las ilustraciones verticales da 1,6 partes a la primera columna, que aquí es la imagen; se invierte para
+   que el texto conserve su ancho. */
+.marco-ancho .escenario.arte-volteado .contexto:has(> .ctx-arte img[src*="/p-"]){grid-template-columns:minmax(0,.6fr) minmax(0,1.6fr)}
+/* U2 L4 p. 3 (hoja: «Ubicado a la izquierda y a la derecha un acordeón con los literales a, b y c»): la columna de la ilustración de los
+   términos, más ancha y con la imagen centrada (con el 20 % de base quedaba un hueco encima de la imagen). */
+@container ova (min-width:900px){
+  .marco-ancho .escenario.arte-lado:has(> .arte-escena img[src*="terminos-reloj"]) > .arte-escena{flex:0 0 30%;align-items:center;background:radial-gradient(ellipse 80% 40% at 50% 70%,var(--hielo) 0 99%,transparent 100%)}
+  .marco-ancho .escenario.arte-lado:has(> .arte-escena img[src*="terminos-reloj"]) > .arte-escena img{width:100%;max-height:92%}
+}
