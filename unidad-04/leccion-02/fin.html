@@ -97,7 +97,7 @@ h1{margin:9px 0 3px;font-size:38px;line-height:1.08;font-weight:800;color:var(--
 </main>
 <script>
 (function(){
- var CLAVE="l1826-juego-u4-l2",MAX=130,TOTAL=2,N=["Observador", "Analista", "Fiscal del abreviado", "Referente en el procedimiento abreviado"],s={};
+ var CLAVE="l1826-juego-u4-l2",MAX=120,TOTAL=2,N=["Observador", "Analista", "Fiscal del abreviado", "Referente en el procedimiento abreviado"],s={};
  try{s=JSON.parse(localStorage.getItem(CLAVE)||'{}')}catch(e){}
  var v=Object.keys(s.v||{}).length,t=Object.keys(s.t||{}).length,p=v*10+t*25,f=p/MAX,k=f>=.8?3:f>=.45?2:f>=.15?1:0,$=function(i){return document.getElementById(i)};
  $('nivel').textContent=N[k];

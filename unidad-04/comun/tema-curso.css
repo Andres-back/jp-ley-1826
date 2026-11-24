@@ -474,12 +474,12 @@ mark.ref-texto{background:#FBFBC5;box-shadow:inset 0 -2px 0 #8CD147}
 .rama-padre:not(.visto){animation:alertaLate 1.8s ease-in-out infinite}
 .rama-mental{transition:opacity .5s ease,filter .5s ease}
 @media (prefers-reduced-motion:reduce){.rama-padre:not(.visto){animation:none}}
-/* Puntos redondos con siete elementos (U2 L3 d2): la leyenda entra completa, en dos columnas y con letra más pequeña. */
+/* Puntos redondos con seis o más elementos (U2 L3 d2; desde el 24/11/2026, seis: la hoja pide un punto por numeral): la leyenda entra completa, con letra más pequeña. */
 @container ova (min-width:900px){
-  .puntos-escena:has(.puntos-leyenda > li:nth-child(7)) .puntos-leyenda{display:grid;grid-template-columns:1fr;gap:5px;align-content:center}
-  .puntos-escena:has(.puntos-leyenda > li:nth-child(7)) .punto-leyenda{padding:5px 10px 5px 8px;min-height:0}
-  .puntos-escena:has(.puntos-leyenda > li:nth-child(7)) .leyenda-rotulo{font-size:12.5px;line-height:1.25}
-  .puntos-escena:has(.puntos-leyenda > li:nth-child(7)) .punto-leyenda .hotspot-n{width:24px;height:24px;font-size:12px}
+  .puntos-escena:has(.puntos-leyenda > li:nth-child(6)) .puntos-leyenda{display:grid;grid-template-columns:1fr;gap:5px;align-content:center}
+  .puntos-escena:has(.puntos-leyenda > li:nth-child(6)) .punto-leyenda{padding:5px 10px 5px 8px;min-height:0}
+  .puntos-escena:has(.puntos-leyenda > li:nth-child(6)) .leyenda-rotulo{font-size:12.5px;line-height:1.25}
+  .puntos-escena:has(.puntos-leyenda > li:nth-child(6)) .punto-leyenda .hotspot-n{width:24px;height:24px;font-size:12px}
 }
 @container ova (max-width:600px){.rama-espera::after{bottom:auto;top:-9px;left:8px;right:auto}}
 /* Lectura ancha (reglas 16–17; Samir: «no fragmentar tanto la información»): a lo ancho, cada parte reúne más ideas (hasta ~950

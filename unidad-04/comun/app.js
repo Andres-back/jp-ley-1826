@@ -828,7 +828,7 @@
     l.classList.toggle('en-hoja', !!hoja);
     /* «ventanaAmplia» (Terminaciones, doctora Clara, 18/11/2026: «ventanas más amplias, más texto y menos clics»): la ventana es
        grande, trae el texto completo de la idea y se desplaza si es largo, sin partes ni «Seguir leyendo»; queda leída al final. */
-    var amplia = !hoja && (!!datos.ventanaAmplia || !!(datos.tablaVentana && html));   // Ley 1826: la tabla, como tabla
+    var amplia = !hoja && (!!datos.ventanaAmplia || !!(datos.tablaVentana && html) || !!(desde && desde.classList && desde.classList.contains('intro-ventana')));   // Ley 1826: la tabla, como tabla
     l.classList.toggle('amplia', amplia);
     /* «html»: la ventana trae una tabla completa ya pintada (malla de la página compacta); solo con ventana amplia. */
     if (!amplia) html = null;
@@ -4178,7 +4178,7 @@
     if (padre && (pestana < 0 || pestana >= padre.pestanas.length)) pestana = 0;
     escena = padre ? padre.pestanas[pestana] : propia; vistos = {}; retornoFoco = null; generacion++; ultimaLectura = null;
     if (modoLamina) { laminaMapa(); return; }
-    total =escena.bloques.reduce(function (a, b) { return a + (b.tipo === 'caso' ? totalCaso(b) : tablaBreve(b) ? 0 : b.items.length) + (b.titulo && b.titulo.length && segs(b.titulo).length > 110 ? 1 : 0); }, 0) + (escena.lead.length ? 1 : 0);
+    total =escena.bloques.reduce(function (a, b) { return a + (b.tipo === 'caso' ? totalCaso(b) : tablaBreve(b) ? 0 : b.items.length) + (b.titulo && b.titulo.length && segs(b.titulo).length > 110 ? 1 : 0); }, 0) + (escena.introVentana ? 1 : 0) + (escena.lead.length ? 1 : 0);
     var ctx = escasa(escena) ? contexto(0) : null;
     var guia = ctx ? (ctx.lista.length > 1 ? 'Elija cada punto y lea su contenido junto a la ilustración.' : 'Lea el contenido junto a la ilustración.') : guias[escena.layout === 'balanza' ? 'fichas' : escena.layout];
     /* El cuadro de una sola parte no tiene «Seguir leyendo»: su guía no lo nombra (SRPA U4-L1, 20/11/2026). */
@@ -4187,7 +4187,7 @@
     /* La tabla breve se ve completa: no hay pestañas que elegir. */
     if (escena.layout === 'tabla' && escena.bloques.length && escena.bloques.every(tablaBreve)) guia = 'Lea la tabla completa.';
     /* Sin nada que explorar (un solo texto a la vista o un caso) no hay barra de avance y la idea clave se ve desde el inicio. */
-    var conAvance = total > 0 && !(ctx && ctx.lista.length === 1);
+    var conAvance = total > 0 && (!(ctx && ctx.lista.length === 1) || !!escena.introVentana);
     /* En pantalla angosta las tarjetas que giran se recorren desplazándose (B.giro): su guía lo dice. */
     var angosta = escena.layout === 'giro' && !escena.guia ? '<span class="guia-angosta">Deslice hacia abajo: cada tarjeta se revela y se lee al pasar.</span>' : '';
     var cab = '<header class="guia"><p class="guia-texto">' + mano + '<span' + (angosta ? ' class="guia-ancha"' : '') + '>' + guia + '</span>' + angosta + '</p>' + juegoHtml() +
@@ -4199,6 +4199,7 @@
          Distinto de escena.descarga (SRPA, documento que la ficha remite a consultar, dentro de la escena). */
       (escena.descargaMapa ? '<a class="descarga-btn" href="' + esc(escena.descargaMapa.archivo) + '" download="' + esc(escena.descargaMapa.nombre || '') + '" target="_blank" rel="noopener">' +
         '<i class="fas fa-file-arrow-down" aria-hidden="true"></i><span>' + esc(escena.descargaMapa.boton || 'Clic para descargar') + '</span></a>' : '') +
+      (escena.introVentana ? '<button type="button" class="descarga-btn intro-ventana" data-id="intro"><i class="fas fa-book-open" aria-hidden="true"></i><span>Clic para leer la introducción</span></button>' : '') +
       '</header>';
     var cuerpo = '';
     if (escena.titulo.length) cuerpo += '<p class="escena-titulo">' + esc(may(segs(escena.titulo))) + '</p>';
@@ -4228,12 +4229,16 @@
       (esAlertaClave ? 'Alerta' : conAvance ? 'Idea clave desbloqueada' : 'Idea clave') + '</span><span class="clave-abrir">' + mano + (esAlertaClave ? ' Clic para leer la alerta' : ' Clic para leer la idea clave') + '</span></button>';
     else if (escena.tail.length) cuerpo += '<p class="caja-clave' + (conAvance ? ' tras-completar" hidden' : '"') + '><span class="clave-rotulo"><i class="fas fa-star" aria-hidden="true"></i> ' +
       (conAvance ? 'Idea clave desbloqueada' : 'Idea clave') + '</span>' + rico(segs(escena.tail)) + '</p>';
+    if (escena.introVentana && !raiz.dataset.introVentana) {
+      raiz.dataset.introVentana = '1';
+      raiz.addEventListener('click', function (e) { var bt = e.target.closest && e.target.closest('.intro-ventana'); if (bt && escena.introVentana) { leer(escena.introVentana.rotulo, segs(escena.introVentana.segs), 'documento', bt); var ht = raiz.querySelector('.lector .hoja-texto'), fs = 16.5; while (ht && ht.scrollHeight > ht.clientHeight + 1 && fs > 14) { fs -= 0.5; ht.style.fontSize = fs + 'px'; } if (ht && ht.scrollHeight > ht.clientHeight + 1) ht.style.lineHeight = '1.45'; marcar('intro'); } });
+    }
     if (claveLarga && !raiz.dataset.claveVentana) {
       raiz.dataset.claveVentana = '1';
       raiz.addEventListener('click', function (e) { var bt = e.target.closest && e.target.closest('.clave-ventana'); if (bt) leer(bt.classList.contains('es-alerta') ? 'Alerta' : 'Idea clave', segs(escena.tail), null, bt); });
     }
     raiz.className = 'ova layout-' + (ctx ? 'contexto' : escena.layout === 'balanza' ? 'fichas' : escena.layout) + (embebido ? ' embebido' : '') + (embebido && leccionPadre() && !botonCedido() ? ' pc-leccion' : '') + (datos.sinHuecos ? ' sin-huecos' : '') +
-      (marcoAncho() ? ' marco-ancho' : '') + (escena.siluetas ? ' con-siluetas' : '') + (datos.ventanaAmplia ? ' ventana-amplia' : '') + (datos.huecosFinos ? ' huecos-finos' : '') + (escena.descargaMapa ? ' con-descarga' : '') + (escena.paginaAncha ? ' lectura-ancha' : '');
+      (marcoAncho() ? ' marco-ancho' : '') + (escena.siluetas ? ' con-siluetas' : '') + (datos.ventanaAmplia ? ' ventana-amplia' : '') + (datos.huecosFinos ? ' huecos-finos' : '') + (escena.descargaMapa || escena.introVentana ? ' con-descarga' : '') + (escena.paginaAncha ? ' lectura-ancha' : '');
     /* Ilustración de la escena en un lugar que varía (Estándares interamericanos; Esteban, 28/10/2026: «a la izquierda, a la
        derecha, en el medio o atrás… de forma embebida para que no sea invasivo»). «arte» = {img, pos}: «izq» o «der», una columna
        propia junto a la mediación; «fondo», la ilustración tenue en la esquina inferior, detrás y sin recibir clics; «centro», en
