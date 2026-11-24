@@ -40,6 +40,9 @@
     '<div class="sigue" role="status"><i class="fas fa-lightbulb" aria-hidden="true"></i><span>Antes de escuchar la resolución, piense cómo resolvería el caso.</span>' +
     '<button type="button">Clic para escuchar la resolución</button></div></section></div>' +
     '<div class="reproductor"><button type="button" class="play latido" aria-label="Reproducir el audio"><i class="fas fa-play" aria-hidden="true"></i></button>' +
+    /* Aviso mientras el audio está en pausa o sin iniciar (JP, 24/11/2026, por Samir en el chat de la coordinadora; en usted): se
+       quita mientras suena (.sonando). */
+    '<span class="aviso-audio" role="status"><i class="fas fa-headphones" aria-hidden="true"></i>Reproduzca el audio</span>' +
     '<span class="ondas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>' +
     '<span class="barra"><i></i><input type="range" min="0" max="1000" value="0" aria-label="Avance del audio"></span>' +
     '<span class="tiempo">0:00 / 0:00</span><button type="button" class="vel" aria-label="Velocidad de la voz">1×</button>' +

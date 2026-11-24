@@ -87,6 +87,11 @@ button:focus-visible,.pal:focus-visible{outline:3px solid var(--naranja);outline
 .play{flex:none;display:grid;place-items:center;width:42px;height:42px;border:0;border-radius:50%;background:var(--naranja);color:#fff;font-size:16px;cursor:pointer}
 .play.latido{animation:latido 1.6s ease-in-out infinite}
 @keyframes latido{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--naranja) 60%,transparent)}50%{box-shadow:0 0 0 9px transparent}}
+/* «Reproduzca el audio» (JP, 24/11/2026): a la vista mientras el audio está en pausa o sin iniciar, en el lugar de las ondas
+   quietas; mientras suena se quita y vuelven las ondas. */
+.aviso-audio{flex:none;display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:99px;background:var(--amarillo);color:var(--marron);
+  font:800 12px/1 Montserrat,Arial,sans-serif;white-space:nowrap}
+.sonando .aviso-audio,#caso:not(.sonando) .ondas{display:none}
 .ondas{flex:none;display:flex;align-items:center;gap:3px;height:24px}
 .ondas i{display:block;width:3px;height:5px;border-radius:2px;background:var(--amarillo);opacity:.55}
 .sonando .ondas i{opacity:1;animation:onda .9s ease-in-out infinite}
