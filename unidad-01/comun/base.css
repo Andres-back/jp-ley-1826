@@ -1989,3 +1989,5 @@ button.cmp-tip:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
 }
 /* Ley 1826, U1: introducción en ventana (hoja_u1_ley1826.py) */
 @container ova (max-width:520px){.descarga-btn.intro-ventana span{display:inline}}
+/* Ley 1826, U1: tabla sin encabezado en la ventana (hoja_u1_ley1826.py, 24/11/2026) */
+.cmp-tabla thead:has(th:only-child:empty){display:none}.cmp-tabla-caja:has(tbody:empty){display:none}
